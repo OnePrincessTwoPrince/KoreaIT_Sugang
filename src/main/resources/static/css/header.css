@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    list-style-type:none; 
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.lnb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 60px;
+}
+img {
+    margin: 20px;
+    margin-right: 0px;
+    height: 50px;
+}
+
+.lnb_inner {
+    display: flex;
+}
+
+.lnb_inner span {
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 30px;
+    margin-right: 20px;
+    height: 40px;
+    
+    font-weight: 600;
+}
+
+.school_name {
+    font-size: 15px;
+}
+
+.school_name li {
+    font-size: 10px;
+
+}
+
+.sugang_date {
+    font-size: 25px;
+    color: #0f4496;
+}
+
+.user_info {
+    float: right;
+}
+
+.user_info ul li {
+    float: left;
+}
+
+.user_info ul li.user a {
+    font-size: 16px;
+    color: #0f397a;
+    font-weight: bold;
+    padding-left: 28px;
+}
+
+.user_info ul li.user > span {
+    font-weight: normal;
+    font-size: 13px;
+}
+
+.user_info ul > li {
+    padding: 0px 12px;
+    color: #777;
+    height: 26px;
+    line-height: 26px;
+}
+
+.menulist {
+    background-color: #0f397a;
+    height: 38px;
+}
+
+.menulist li {
+    display : inline-block;
+    margin: 0px 50px;
+}
+
+.menulist li > a {
+    font-size: 17px;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+    display: block;
+    border-right: 1px solid #427fdd;
+}
+
+
+
