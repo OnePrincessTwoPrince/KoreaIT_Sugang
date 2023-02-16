@@ -1,0 +1,89 @@
+.my-page {
+    padding: 40px 600px;
+    display: flex;
+    flex-direction: row;
+}
+
+.content-left, .content-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    width: 400px;
+}
+
+.img-file {
+    display: none;
+}
+
+.img-add-button {
+    width: 140px;
+    height: 30px;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    border-radius: 5px;
+
+    color: white;
+    background-color: #1763dc76;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 0;
+    height: 220px;
+
+    overflow: hidden;
+}
+
+.person-img {
+    height: 200px;
+}
+
+.item-group {
+    flex-direction: column;
+}
+
+.modification-label {
+    margin-bottom: 5px;
+    padding-left: 3px;
+
+    font-size: 16px;
+}
+
+.modification-input {
+    display: flex;
+    height: 35px;
+    margin: 10px 0;
+}
+
+.button-group {
+    padding-left:80px;
+    font-size: 16px;
+}
+
+.modification-button {
+    width: 100px;
+    height: 30px;
+    border-color: #1764dc;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 600;
+
+    color: white;
+    background-color: #0062ff76;
+}
+
+
+
+
