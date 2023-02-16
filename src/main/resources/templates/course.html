@@ -7,42 +7,144 @@
     <title>코리아IT 대학교 수강신청</title>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/coursepage/course.css">
 </head>
 <body>
-    <div class="table-container">
-        <h2>개설강좌</h2>
-            <table class="opened-table">
-                <thead>
-                    <tr>
-                        <th>신청</th>
-                        <th>이수구분</th>
-                        <th>과목번호</th>
-                        <th>과목명</th>
-                        <th>학점/시간</th>
-                        <th>담당교수</th>
-                        <th>강의실(시간)</th>
-                        <th>구분</th>
-                        <th>원격구분</th>
-                        <th>전공상호인정과목</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+    <header>
+        <div class="lnb wrap">
+            <div class="lnb-inner">
+                <h1>
+                    <img src="/static/image/logo.png" alt="코리아IT 대학교 수강신청">
+                </h1>
+                <span class="school-name">코리아IT 대학교 <li>KOREA-IT UNIVERSITY</li></span>
+                <span class="sugang-date">2023학년도 1학기 수강신청</span>
+            </div>
+            <div class="user-info">
+                <ul>
+                    <li class="user"><a href="">김지향<span>19120012</span></a></li>
+                    <li>공과대학</li>
+                    <li>메카트로닉스공학부</li>
+                    <li>4학년</li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="menulist wrap">
+                <li><a href="/templates/announcement.html">공지사항</a></li>
+                <li><a href="">강의시간표</a></li>
+                <li><a href="">수강신청</a></li>
+                <li><a href="">수강확정/대기내역</a></li>
+                <li><a href="">학점이수현황</a></li>
+                <li><a href="">재수강신청</a></li>
+                <li><a href="">재수강내역</a></li>
+                <li><a href="">수강신청편람</a></li>
+                <li><a href="">매뉴얼</a></li>
+                <li><a href="">로그아웃</a></li>
+        </div>
+    </header>
 
-        <div class="page-controller">
-            <ul class="page-numbers">
-                <a href=""><li>1</li></a>
-                <a href=""><li>2</li></a>
-            </ul>
-        </div>
-        <div class="comfirmed-course">
+    <div class="container">
+        <div class="table-container">
+            <div class="search">
+                <span class="search-title">
+                    <label for="" class="title-text">과목유형</label>
+                    <span class="info">
+                        <input type="checkbox" class="info-checkbox">
+                        <label for="" class="info-text">장바구니</label>
+                        <input type="checkbox" class="info-checkbox">
+                        <label for="" class="info-text">교양</label>
+                        <input type="checkbox" class="info-checkbox">
+                        <label for="" class="info-text">전공</label>
+                        <input type="checkbox" class="info-checkbox">
+                        <label for="" class="info-text">마이크로디그리</label>
+                        <input type="checkbox" class="info-checkbox">
+                        <label for="" class="info-text">부전공</label>
+                        <input type="checkbox" class="info-checkbox">
+                        <label for="" class="info-text">복수전공</label>
+                        <input type="checkbox" class="info-checkbox">
+                        <label for="" class="info-text">연계전공</label>
+                        <input type="checkbox" class="info-checkbox">
+                        <label for="" class="info-text">융합전공</label>
+                        <input type="checkbox" class="info-checkbox">
+                        <label for="" class="info-text">교직/평교</label>
+                        <input type="checkbox" class="info-checkbox">
+                        <label for="" class="info-text">자유선택</label>
+                    </span>
+                </span>
+                <div style="height: 40px;"></div>
+            </div>
     
+            <div class="course-container">
+                <h2 class="course-title" >개설강좌</h2>
+            </div>
+            <div class="table">
+                <table class="opened-table">
+                    <thead>
+                        <tr>
+                            <th>신청</th>
+                            <th>이수구분</th>
+                            <th>과목번호</th>
+                            <th>과목명</th>
+                            <th>학점/시간</th>
+                            <th>담당교수</th>
+                            <th>강의실(시간)</th>
+                            <th>구분</th>
+                            <th>원격구분</th>
+                            <th>전공상호인정과목</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="page-controller">
+                <ul class="page-numbers">
+                    <a href=""><li>1</li></a>
+                    <a href=""><li>2</li></a>
+                </ul>
+            </div>
+            <hr class="border-line">
+
+            <div class="comfirmed-course">
+                <div>
+                    <h2>수강확정내역</h2>
+                    
+                </div>
+                <div class="table">
+                    <table class="confirmed-table">
+                        <thead>
+                            <tr>
+                                <th>신청</th>
+                                <th>이수구분</th>
+                                <th>과목번호</th>
+                                <th>과목명</th>
+                                <th>학점/시간</th>
+                                <th>담당교수</th>
+                                <th>강의실(시간)</th>
+                                <th>구분</th>
+                                <th>원격구분</th>
+                                <th>전공상호인정과목</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
         </div>
-        <div>
-    
+
+
+
+
+        <div class="schedule-table">
+            <div class="ha"></div>
         </div>
     </div>
+    
+    
+        
     
 </body>
 </html>
