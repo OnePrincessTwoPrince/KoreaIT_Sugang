@@ -44,6 +44,11 @@ img {
 
 .school-name {
     font-size: 15px;
+    cursor: pointer;
+}
+
+.school-name a {
+    color: black;
 }
 
 .school-name li {
