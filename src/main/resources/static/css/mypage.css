@@ -29,23 +29,6 @@
     width: 400px;
 }
 
-.img-file {
-    display: none;
-}
-
-.img-add-button {
-    width: 140px;
-    height: 30px;
-
-    font-size: 20px;
-    font-weight: 600;
-
-    border-radius: 5px;
-
-    color: white;
-    background-color: #1164e976;
-}
-
 .img-container {
     display: flex;
     justify-content: center;
@@ -60,6 +43,30 @@
 .person-img {
     height: 200px;
 }
+
+.img-add-button {
+    width: 140px;
+    height: 25px;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    border-radius: 20px;
+    cursor: pointer;
+    
+    color: white;
+    border: 1px solid #1764dc;
+    background-color: #6a8cc0;
+}
+
+.img-add-button:hover {
+    background-color: #1764dc;
+}
+
+.img-file {
+    display: none;
+}
+
 
 .item-group {
     flex-direction: column;
@@ -78,7 +85,7 @@
     text-align: center;
     width: 230px;
     height: 35px;
-    margin: 10px 0;
+    margin: 5px 0 20px 0;
     border: 0;
 
     border-radius: 30px;
@@ -91,20 +98,25 @@
 
 .button-group {
     padding-left:120px;
-    padding-top: 20px;
+    padding-top: 15px;
     font-size: 16px;
 }
 
 .modification-button {
-    width: 100px;
+    width: 120px;
     height: 30px;
-    border-color: #ffffff;
+    border: 1px solid #1764dc;
     border-radius: 3px;
     font-size: 16px;
     font-weight: 600;
+    cursor: pointer;
 
     color: white;
-    background-color: #0062ff76;
+    background-color: #6a8cc0;
+}
+
+.modification-button:hover {
+    background-color: #1764dc;
 }
 
 

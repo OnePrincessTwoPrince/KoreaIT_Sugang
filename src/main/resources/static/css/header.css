@@ -99,7 +99,12 @@ img {
 }
 
 .menulist{
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;     
+
     background-color: #1764dc;
     height: 38px;
     width: 100%;
@@ -121,8 +126,7 @@ img {
 }
 
 .menulist li a {
-    font-size: 17px;
-    letter-spacing: -0.05em;
+    font-size: 16px;    
 
     width: 139px;
     height: 18px;
