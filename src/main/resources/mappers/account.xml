@@ -42,7 +42,6 @@
             um.email,
             um.address,
             um.department_number,
-            um.provider,
 
             rd.role_id,
             rm.role_name
@@ -66,7 +65,6 @@
             um.email,
             um.address,
             um.department_number,
-            um.provider,
 
             rd.role_id,
             rm.role_name
@@ -75,25 +73,17 @@
             left outer join role_dtl rd on(rd.user_id = um.user_id)
             left outer join role_mst rm on(rm.role_id = rd.role_id)
         where
-            um.user_id = #{user_id}
+            um.user_id = #{userId}
     </select>
 
     <insert id="saveUser" parameterType="com.koreait.koreaitsugang.entity.UserMst" useGeneratedKeys="true" keyProperty="userId">
         insert into user_mst
-        values (0, #{student_id}, #{professor_id}, #{username}, #{password}, #{phone}, #{birthDate}, #{email}, #{address}, #{department_number})
+        values (0, #{studentId}, #{professorId}, #{username}, #{password}, #{phone}, #{birthDate}, #{email}, #{address}, #{departmentNumber})
     </insert>
 
     <insert id="saveRole">
         insert into role_dtl
-        values (0, #{user_id}, 1)
+        values (0, #{userId}, 1)
     </insert>
 
-    <update id="setUserProvider" parameterType="com.koreait.koreaitsugang.entity.UserMst">
-        update
-            user_mst
-        set
-            provider = #{provider}
-        where
-            userId = #{userId}
-    </update>
 </mapper>

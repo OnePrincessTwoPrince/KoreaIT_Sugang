@@ -36,8 +36,6 @@ public class UserMst {
 
     private int departmentNumber;
 
-    private String provider;
-
     private List<RoleDtl> roleDtl;
 
 
