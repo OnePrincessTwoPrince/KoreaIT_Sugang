@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koreait.koreaitsugang.repository.FindRepository">
+    <select id="getUserId"
+            parameterType="com.koreait.koreaitsugang.web.dto.FindReqDto"
+            resultType="integer">
+        select
+            user_id as usertId
+        from
+            user_mst
+        where
+            username = ${username},
+            birthDate = ${birthDate},
+            email = ${email}
+    </select>
+
+    <select id="getStudentPassword"
+            parameterType="com.koreait.koreaitsugang.web.dto.FindReqDto"
+            resultType="integer">
+        select
+            password
+        from
+            user_mst
+        where
+            user_id as ${userId},
+            email = ${email}
+    </select>
+</mapper>

@@ -2,15 +2,34 @@ server:
   port: 8000
 
 spring:
+#  mail:
+#    host, port는 네이버에서 정해준 값
+#    host: smtp.naver.com
+#    port: 465
+#    username: myeong459@naver.com
+#    password: qkrtksla459
+#    properties:
+#      mail.smtp.auth: true
+#      mail.smtp.enable: true
+#      mail.smtp.ssl.trust: smtp.naver.com
+
   mvc:
     static-path-pattern: /static/**
     pathmatch:
       matching-strategy: ant_path_matcher
   datasource:
+
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: doyoung.c3yf6hovsgph.ap-northeast-2.rds.amazonaws.com:3306/sugang
     username: admin
     password: 1q2w3e4r
+  security:
+    user:
+      name: test
+      password: 1234
+
+
 
 mybatis:
-  mapper-location:
+  mapper-locations:
     - /mappers/*.xml
