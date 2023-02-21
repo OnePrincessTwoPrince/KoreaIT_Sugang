@@ -3,16 +3,97 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.koreait.koreaitsugang.repository.AccountRepository">
-    <insert id="saveUser"
-            parameterType="com.koreait.koreaitsugang.entity.UserMst"
-            useGeneratedKeys="true" keyProperty="userId">
+
+    <resultMap id="userMst" type="com.koreait.koreaitsugang.entity.UserMst">
+        <result property="userId" column="user_id"></result>
+        <result property="studentId" column="student_id"></result>
+        <result property="professorId" column="professor_id"></result>
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
+        <result property="phone" column="phone"></result>
+        <result property="birthDate" column="birthDate"></result>
+        <result property="email" column="email"></result>
+        <result property="address" column="address"></result>
+        <result property="departmentNumber" column="department_number"></result>
+        <collection property="roleDtl" javaType="list" resultMap="roleDtl"></collection>
+    </resultMap>
+
+    <resultMap id="roleMst" type="com.koreait.koreaitsugang.entity.RoleMst">
+        <result property="roleId" column="role_id"></result>
+        <result property="roleName" column="role_name"></result>
+    </resultMap>
+
+    <resultMap id="roleDtl" type="com.koreait.koreaitsugang.entity.RoleDtl">
+        <result property="roleDtlId" column="role_dtl_id"></result>
+        <result property="userId" column="user_id"></result>
+        <result property="roleId" column="role_id"></result>
+        <collection property="roleMst" resultMap="roleMst"></collection>
+    </resultMap>
+
+    <select id="findUserByUsername" parameterType="String" resultMap="userMst">
+        select
+            um.user_id,
+            um.student_id,
+            um.professor_id,
+            um.username,
+            um.password,
+            um.phone,
+            um.birthDate,
+            um.email,
+            um.address,
+            um.department_number,
+            um.provider,
+
+            rd.role_id,
+            rm.role_name
+        from
+            user_mst um
+            left outer join role_dtl rd on(rd.user_id = um.user_id)
+            left outer join role_mst rm on(rm.role_id = rd.role_id)
+        where
+            um.username = #{username}
+    </select>
+
+    <select id="findUserByUserId" parameterType="Integer" resultMap="userMst">
+        select
+            um.user_id,
+            um.student_id,
+            um.professor_id,
+            um.username,
+            um.password,
+            um.phone,
+            um.birthDate,
+            um.email,
+            um.address,
+            um.department_number,
+            um.provider,
+
+            rd.role_id,
+            rm.role_name
+        from
+            user_mst um
+            left outer join role_dtl rd on(rd.user_id = um.user_id)
+            left outer join role_mst rm on(rm.role_id = rd.role_id)
+        where
+            um.user_id = #{user_id}
+    </select>
+
+    <insert id="saveUser" parameterType="com.koreait.koreaitsugang.entity.UserMst" useGeneratedKeys="true" keyProperty="userId">
         insert into user_mst
-        values()
+        values (0, #{student_id}, #{professor_id}, #{username}, #{password}, #{phone}, #{birthDate}, #{email}, #{address}, #{department_number})
     </insert>
 
-    <insert id="saveRole"
-            parameterType="com.koreait.koreaitsugang.entity.UserMst">
+    <insert id="saveRole">
         insert into role_dtl
-        values()
+        values (0, #{user_id}, 1)
     </insert>
+
+    <update id="setUserProvider" parameterType="com.koreait.koreaitsugang.entity.UserMst">
+        update
+            user_mst
+        set
+            provider = #{provider}
+        where
+            userId = #{userId}
+    </update>
 </mapper>
