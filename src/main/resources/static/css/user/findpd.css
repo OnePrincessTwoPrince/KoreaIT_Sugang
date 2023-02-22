@@ -1,0 +1,65 @@
+
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'SUIT-Regular';
+    font-size: 14px;
+}
+
+a{
+    text-decoration: none;
+}
+
+button {
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.find-password{
+    display: flex;
+    flex-direction: column;
+    font-size:11px;
+
+    width:350px;
+}
+
+.input-id, .input-name, .input-birthDate, .input-email{
+    display: flex;
+    flex-direction: column;
+
+    margin-top:5px;
+    margin-bottom:2px;
+}
+
+.student-id, .student-name, .student-birthDate{
+    width:150px;
+    outline: none;
+
+    border:1px solid #3a3a3a;
+    box-shadow:0 0 3px rgb(0 0 0 / 26%);
+
+    border-radius: 3px;
+}
+
+.find-button{
+
+    padding-left: 115px;
+}
+
+.find-submit{
+    width:40px;
+
+    color:white;
+
+    background-color: #9cc5eb;
+    border:1px solid #9cc5eb;
+    border-radius: 5px;
+}
