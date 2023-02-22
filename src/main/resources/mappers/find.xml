@@ -11,15 +11,15 @@
         from
             user_mst
         where
-            username = ${username},
-            birthDate = ${birthDate},
-            email = ${email}
+            username = #{username},
+            birthDate = #{birthDate},
+            email = #{email}
     </select>
 
     <select id="getStudentPassword"
             parameterType="com.koreait.koreaitsugang.web.dto.FindReqDto"
             resultType="integer">
-        select       
+        select
             password
         from
             user_mst
