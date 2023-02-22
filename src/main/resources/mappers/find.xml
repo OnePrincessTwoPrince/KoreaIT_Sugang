@@ -11,9 +11,9 @@
         from
             user_mst
         where
-            username = ${username},
-            birthDate = ${birthDate},
-            email = ${email}
+            username = #{username},
+            birthDate = #{birthDate},
+            email = #{email}
     </select>
 
     <select id="getStudentPassword"
@@ -24,7 +24,7 @@
         from
             user_mst
         where
-            user_id as ${userId},
-            email = ${email}
+            user_id as #{userId},
+            email = #{email}
     </select>
 </mapper>
