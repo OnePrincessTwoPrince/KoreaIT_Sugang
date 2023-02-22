@@ -23,7 +23,7 @@ public class SubjectMst {
 
     private int subjectGrade;
 
-    private String studyArea;
+    private String category;
 
     private String subjectName;
 
