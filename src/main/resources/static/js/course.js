@@ -5,7 +5,7 @@ window.onload = () => {
 const searchObj = {
     page: 1,
     searchValue: null,
-    studyArea: new Array(),
+    category: null,
     count: 10
 }
 
@@ -18,13 +18,13 @@ class SearchApi {
         return this.#instance;
     }
 
-    getStudyArea() {
+    getCategory() {
         let returnData = null;
 
         $.ajax({
             async: false,
             type: "get",
-            url: "http://127.0.0.1:8000/api/admin/studyArea",
+            url: "http://127.0.0.1:8000/api/search",
             dataType: "json",
             success : response => {
                 console.log(response);
@@ -51,8 +51,10 @@ class SearchService {
         const categoryList = document.querySelector(".info");
         categoryList.innerHTML = ``;
         
-        const responseData = SearchApi.getInstance().getStudyArea();
+        const responseData = SearchApi.getInstance().getCategory();
+        
         responseData.forEach(categoryObj => {
+          
             categoryList.innerHTML += `
                     <input type="radio" class="info-radio" id="${categoryObj.category}" value="${categoryObj.category}">
                     <label for="${categoryObj.category}">${categoryObj.category}</label>
