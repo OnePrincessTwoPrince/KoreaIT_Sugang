@@ -18,18 +18,14 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   datasource:
-
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: doyoung.c3yf6hovsgph.ap-northeast-2.rds.amazonaws.com:3306/sugang
+    url: jdbc:mysql://doyoung.c3yf6hovsgph.ap-northeast-2.rds.amazonaws.com:3306/sugang
     username: admin
     password: 1q2w3e4r
   security:
     user:
       name: test
       password: 1234
-
-
-
 mybatis:
   mapper-locations:
     - /mappers/*.xml

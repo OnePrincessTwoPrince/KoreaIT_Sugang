@@ -19,12 +19,12 @@
     <select id="getStudentPassword"
             parameterType="com.koreait.koreaitsugang.web.dto.FindReqDto"
             resultType="integer">
-        select
+        select       
             password
         from
             user_mst
         where
-            user_id as ${userId},
-            email = ${email}
+            user_id as #{userId},
+            email = #{email}
     </select>
 </mapper>
