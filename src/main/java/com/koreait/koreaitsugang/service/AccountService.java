@@ -24,7 +24,7 @@ public class AccountService {
         return userMst;
     }
 
-    public UserMst getUser(int userId){
+    public UserMst getUser(String userId){
         return accountRepository.findUserByUserId(userId);
     }
 

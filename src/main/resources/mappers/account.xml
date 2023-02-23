@@ -50,10 +50,10 @@
             left outer join role_dtl rd on(rd.user_id = um.user_id)
             left outer join role_mst rm on(rm.role_id = rd.role_id)
         where
-            um.username = #{username}
+            um.user_id = #{userId}
     </select>
 
-    <select id="findUserByUserId" parameterType="Integer" resultMap="userMst">
+    <select id="findUserByUserId" parameterType="String" resultMap="userMst">
         select
             um.user_id,
             um.student_id,

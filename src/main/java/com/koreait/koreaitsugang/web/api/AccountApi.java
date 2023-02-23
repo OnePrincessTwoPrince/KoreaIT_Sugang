@@ -31,7 +31,7 @@ public class AccountApi {
             @ApiResponse(code =401, message = "클라이언트가 잘못2")
     })
     @GetMapping("/user/{userId}")
-    public ResponseEntity<? extends CMRespDto<? extends UserMst>> getUser(@PathVariable int userId){
+    public ResponseEntity<? extends CMRespDto<? extends UserMst>> getUser(@PathVariable String userId){
         return ResponseEntity
                 .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(), "Success", accountService.getUser(userId)));

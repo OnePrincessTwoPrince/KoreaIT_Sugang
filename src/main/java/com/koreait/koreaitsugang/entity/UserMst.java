@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class UserMst {
-    private int userId;
+    private String userId;
 
     private int studentId;
 
