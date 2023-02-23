@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 
 
 import java.util.ArrayList;
@@ -45,11 +44,6 @@ public class PrincipalDetails implements UserDetails {
         }
         return authorities;
     }
-
-//    @Override
-//    public int getUserId() {
-//        return user.getUserId();
-//    }
 
     @Override
     public String getPassword() {
