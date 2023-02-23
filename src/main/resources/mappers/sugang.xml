@@ -17,12 +17,10 @@
 <!--        (#{subjectCode}, #{subejctClass}, #{studentId}, #{professorName}, #{insertTime}, #{grade})-->
 <!--    </insert>-->
 
-    <select id="searchCategory" parameterType="com.koreait.koreaitsugang.web.dto.SearchSugangReqDto" resultType="com.koreait.koreaitsugang.entity.SubjectMst">
+    <select id="searchCategory" resultType="com.koreait.koreaitsugang.entity.SubjectMst">
         select distinct category
         from
             subject_mst
-        where
-            category = #{category}
     </select>
 
 </mapper>

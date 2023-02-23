@@ -54,13 +54,21 @@ class SearchService {
         
         const responseData = SearchApi.getInstance().getCategory();
         
-        responseData.forEach(categoryObj => {
+        responseData.forEach((categoryObj,index) => {
           
             categoryList.innerHTML += `
-                    <input type="radio" class="info-radio" id="${categoryObj.category}" value="${categoryObj.category}">
-                    <label for="${categoryObj.category}">${categoryObj.category}</label>
+                <input type="radio" name="test1" class="info-radio" id="${categoryObj.category}" value="${categoryObj.category}">
+                <label for="${categoryObj.category}">${categoryObj.category}</label>
             `;
+
+            if(responseData.length -1 == index) {
+                categoryList.innerHTML += `
+                    <input type="radio" name="test1" class="info-radio" id="${categoryObj.category}" value="${categoryObj.category}">
+                    <label for="${categoryObj.category}">장바구니</label>
+                ` 
+            }
         });
+
     }
 }
 
