@@ -18,4 +18,5 @@ public class AccountController {
     public String loginError() {
         return "user/login_error";
     }
+
 }

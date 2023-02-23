@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koreait.koreaitsugang.repository.SugangRepository">
+
+<!--    <insert id="confirmedApplication"-->
+<!--            parameterType="com.koreait.koreaitsugang.web.dto.SubjectReqDto">-->
+<!--        insert into confirmedApplication-->
+<!--        values-->
+<!--        (#{category},#{subjectCode},#{subjectName},#{credit}, #{professorName}, #{building}, #{lectureTime}-->
+<!--    </insert>-->
+<!--    <insert id="fastsugangapplication"-->
+<!--            parameterType="com.koreait.koreaitsugang.web.dto.FastSugangReqDto">-->
+<!--        insert into confirmed_mst-->
+<!--        values-->
+<!--        (#{subjectCode}, #{subejctClass}, #{studentId}, #{professorName}, #{insertTime}, #{grade})-->
+<!--    </insert>-->
+
+    <select id="searchCategory" resultType="com.koreait.koreaitsugang.entity.SubjectMst">
+        select distinct category
+        from
+            subject_mst
+    </select>
+
+</mapper>

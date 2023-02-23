@@ -8,16 +8,27 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+<<<<<<< HEAD
 import org.springframework.security.oauth2.core.user.OAuth2User;
+=======
+
+>>>>>>> 0f12c4d2b441e3f620b923b4e7ff5969b86e740b
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class PrincipalDetails implements UserDetails, OAuth2User {
+=======
+
+@RequiredArgsConstructor
+@AllArgsConstructor
+public class PrincipalDetails implements UserDetails {
+>>>>>>> 0f12c4d2b441e3f620b923b4e7ff5969b86e740b
 
     @Getter
     private final UserMst user;
@@ -74,6 +85,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
         return true;
     }
 
+<<<<<<< HEAD
     @Override
     public Map<String, Object> getAttributes() {
         return response;
@@ -83,4 +95,6 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
     public String getName() {
         return null;
     }
+=======
+>>>>>>> 0f12c4d2b441e3f620b923b4e7ff5969b86e740b
 }
