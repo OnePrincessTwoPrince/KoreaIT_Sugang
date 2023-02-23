@@ -10,7 +10,6 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -52,16 +51,16 @@ public class AccountApi {
                 .body(new CMRespDto<>(HttpStatus.OK.value(), "Success", accountService.getUser(userId)));
     }
 
-//    @GetMapping("/principal")
-//    public ResponseEntity<CMRespDto<? extends PrincipalDetails>> getPrincpalDetails(@ApiParam(hidden = true) @AuthenticationPrincipal PrincipalDetails principalDetails) {
-//
-//        if (principalDetails != null) {
-//            principalDetails.getAuthorities().forEach(role -> {
-//                log.info("로그인된 사용자의 권한 : {}", role.getAuthority());
-//            });
-//        }
-//        return ResponseEntity
-//                .ok()
-//                .body(new CMRespDto<>(HttpStatus.OK.value(), "Success", principalDetails));
-//    }
+    @GetMapping("/principal")
+    public ResponseEntity<CMRespDto<? extends PrincipalDetails>> getPrincpalDetails(@ApiParam(hidden = true) @AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+        if (principalDetails != null) {
+            principalDetails.getAuthorities().forEach(role -> {
+                log.info("로그인된 사용자의 권한 : {}", role.getAuthority());
+            });
+        }
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Success", principalDetails));
+    }
 }
