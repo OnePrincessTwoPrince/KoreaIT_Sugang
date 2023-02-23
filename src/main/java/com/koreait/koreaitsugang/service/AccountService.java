@@ -4,6 +4,7 @@ import com.koreait.koreaitsugang.entity.UserMst;
 import com.koreait.koreaitsugang.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +25,12 @@ public class AccountService {
         return userMst;
     }
 
+    public void passwordEncoded(String password) {
+
+    }
+
     public UserMst getUser(int userId){
         return accountRepository.findUserByUserId(userId);
     }
-
 
 }

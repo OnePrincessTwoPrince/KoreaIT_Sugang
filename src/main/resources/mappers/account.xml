@@ -78,10 +78,10 @@
 
     <insert id="saveUser" parameterType="com.koreait.koreaitsugang.entity.UserMst" useGeneratedKeys="true" keyProperty="userId">
         insert into user_mst
-        values (0, #{studentId}, #{professorId}, #{username}, #{password}, #{phone}, #{birthDate}, #{email}, #{address}, #{departmentNumber})
+        values (0, 1, 2, #{username}, #{password}, #{phone}, #{birthDate}, #{email}, #{address}, #{departmentNumber})
     </insert>
 
-    <insert id="saveRole">
+    <insert id="saveRole" parameterType="com.koreait.koreaitsugang.entity.UserMst">
         insert into role_dtl
         values (0, #{userId}, 1)
     </insert>

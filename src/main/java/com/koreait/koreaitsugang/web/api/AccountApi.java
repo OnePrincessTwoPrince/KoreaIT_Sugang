@@ -1,5 +1,6 @@
 package com.koreait.koreaitsugang.web.api;
 
+import com.koreait.koreaitsugang.aop.annotation.ValidAspect;
 import com.koreait.koreaitsugang.entity.UserMst;
 import com.koreait.koreaitsugang.security.PrincipalDetails;
 import com.koreait.koreaitsugang.service.AccountService;
@@ -9,13 +10,15 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.net.URI;
 
 
 @Slf4j
@@ -25,6 +28,18 @@ public class AccountApi {
 
     @Autowired
     private AccountService accountService;
+
+    @ValidAspect
+    @PostMapping("/password")
+    public ResponseEntity<? extends CMRespDto<? extends UserMst>> passencode(@RequestBody @Valid UserMst userMst, BindingResult bindingResult) {
+
+        UserMst user = accountService.registerUser(userMst);
+
+        return ResponseEntity
+                .created(URI.create("/api/account/user/" + userMst.getUserId()))
+                .body(new CMRespDto<>(HttpStatus.CREATED.value(), "Create a new User", user));
+    }
+
 
     @ApiResponses({
             @ApiResponse(code =400, message = "클라이언트가 잘못"),
