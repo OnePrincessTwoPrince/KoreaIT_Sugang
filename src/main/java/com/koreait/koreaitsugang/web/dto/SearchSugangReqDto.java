@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class SearchBookReqDto {
+public class SearchSugangReqDto {
     private List<String> categories;
 
 }
