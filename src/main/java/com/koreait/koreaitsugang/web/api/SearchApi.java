@@ -18,9 +18,8 @@ public class SearchApi {
     private SearchService searchService;
 
     @GetMapping("/search")
-    public ResponseEntity<CMRespDto<?>> search(SearchSugangReqDto searchSugangReqDto){
-        searchService.Categories(searchSugangReqDto);
+    public ResponseEntity<CMRespDto<?>> search(){
         return ResponseEntity.ok()
-                .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully",searchService.Categories(searchSugangReqDto)));
+                .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully",searchService.Categories()));
     }
 }

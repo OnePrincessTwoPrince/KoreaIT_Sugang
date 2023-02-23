@@ -9,6 +9,6 @@ import java.util.List;
 @Mapper
 public interface SugangRepository {
 
-    public List<String> searchCategory(SearchSugangReqDto searchSugangReqDto);
+    public List<String> searchCategory();
 
 }

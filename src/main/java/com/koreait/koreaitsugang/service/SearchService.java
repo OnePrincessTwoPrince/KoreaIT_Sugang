@@ -14,8 +14,7 @@ public class SearchService {
     @Autowired
     private SugangRepository sugangRepository;
 
-    public List<String> Categories(SearchSugangReqDto searchSugangReqDto) {
-        searchSugangReqDto.getCategories();
-        return sugangRepository.searchCategory(searchSugangReqDto);
+    public List<String> Categories() {
+        return sugangRepository.searchCategory();
     }
 }
