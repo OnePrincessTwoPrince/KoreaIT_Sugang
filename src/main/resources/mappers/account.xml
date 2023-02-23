@@ -53,7 +53,7 @@
             um.username = #{username}
     </select>
 
-    <select id="findUserByUserId" parameterType="Integer" resultMap="userMst">
+    <select id="findUserByUserId" parameterType="integer" resultMap="userMst">
         select
             um.user_id,
             um.student_id,
