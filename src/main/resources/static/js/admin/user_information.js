@@ -2,6 +2,7 @@ window.onload = () => {
     UserInformatinService.getInstance().loadCategories();
 }
 
+
 class UserInformatinApi{
 
     static #instance = null;
@@ -13,21 +14,23 @@ class UserInformatinApi{
     }
 
     getMajorCategories(){
-        let responseData = null;
+        let returnData = null;
 
         $.ajax({
             async: false,
             type: "get",
-            url: "http://localhost:8000/api/admin/major",
+            url: "http://localhost:8000/api/admin",
             dataType: "json",
-            suceess: responese => {
-                responeseData = responese.data;
+            success: responese => {
+                console.log(responese);
+                returnData = responese.data;
             }, 
             error: error => {
                 console.log(error);
             }
         });
-        return responseData;
+
+        return returnData;
     }
 
 }
@@ -49,7 +52,7 @@ class UserInformatinService{
 
         responeseData.forEach(data => {
             categorySelect.innerHTML += `
-                <option value="${data.category}">${data.category}</option>
+                <option value="${data}">${data}</option>
             `;
         });
     }

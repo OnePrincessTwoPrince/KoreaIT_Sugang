@@ -31,8 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/mypage/**", "/security/**")
                 .authenticated()
-                .antMatchers("/admin/**")
-                .hasRole("ADMIN")
+//                .antMatchers("/admin/**")
+//                .hasRole("ADMIN")
                 .anyRequest()
                 .permitAll()
                 .and()
@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/account/login")
                 .loginProcessingUrl("/account/login")
                 .failureForwardUrl("/account/login/error")
-                .defaultSuccessUrl("/index");
+                .defaultSuccessUrl("/announcement");
 
     }
 
