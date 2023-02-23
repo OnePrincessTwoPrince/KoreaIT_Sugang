@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f12c4d2b441e3f620b923b4e7ff5969b86e740b
 package com.koreait.koreaitsugang.security;
 
 import com.koreait.koreaitsugang.entity.UserMst;
@@ -21,15 +17,9 @@ public class PrincipalDetailsService implements UserDetailsService {
     private AccountRepository accountRepository;
 
     @Override
-<<<<<<< HEAD
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         UserMst user = accountRepository.findUserByUsername(username);
-=======
-    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-
-        UserMst user = accountRepository.findUserByUsername(userId);
->>>>>>> 0f12c4d2b441e3f620b923b4e7ff5969b86e740b
 
         if (user == null) {
             throw new UsernameNotFoundException("회원정보를 확인할 수 없음");
@@ -38,7 +28,3 @@ public class PrincipalDetailsService implements UserDetailsService {
         return new PrincipalDetails(user);
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f12c4d2b441e3f620b923b4e7ff5969b86e740b
