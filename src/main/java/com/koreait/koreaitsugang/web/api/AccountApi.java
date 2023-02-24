@@ -10,13 +10,10 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,6 +39,7 @@ public class AccountApi {
                 .created(URI.create("/api/account/user/" + userMst.getUserId()))
                 .body(new CMRespDto<>(HttpStatus.CREATED.value(), "Create a new User", user));
     }
+
 
     @ApiResponses({
             @ApiResponse(code =400, message = "클라이언트가 잘못"),

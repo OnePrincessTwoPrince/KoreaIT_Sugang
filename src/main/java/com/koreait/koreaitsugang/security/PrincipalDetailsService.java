@@ -1,3 +1,4 @@
+
 package com.koreait.koreaitsugang.security;
 
 import com.koreait.koreaitsugang.entity.UserMst;
@@ -17,9 +18,9 @@ public class PrincipalDetailsService implements UserDetailsService {
     private AccountRepository accountRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 
-        UserMst user = accountRepository.findUserByUsername(username);
+        UserMst user = accountRepository.findUserByUsername(userId);
 
         if (user == null) {
             throw new UsernameNotFoundException("회원정보를 확인할 수 없음");

@@ -24,23 +24,6 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "get",
-<<<<<<< HEAD
-            url: "http://127.0.0.1:8000/api/admin/studyArea",
-            dataType: "json",
-            success: response => {
-                console.log(response);
-                returnData = response.data;
-            }, 
-            error: error => {
-                console.log(error);
-            }
-        });
-
-        return returnData;
-    }
-}
-
-=======
             url: "http://127.0.0.1:8000/api/search",
             data: searchObj,
             dataType: "json",
@@ -114,4 +97,3 @@ class SearchService {
 //         }); 
 //     }
 // }
->>>>>>> 0f12c4d2b441e3f620b923b4e7ff5969b86e740b

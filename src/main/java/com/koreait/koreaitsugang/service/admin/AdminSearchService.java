@@ -16,6 +16,7 @@ public class AdminSearchService {
 
     public List<String> Categories(){
         List<String> category = majorRepository.majorCategory();
+        System.out.println(category);
         return category;
     }
 }
