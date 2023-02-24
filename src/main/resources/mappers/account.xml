@@ -81,7 +81,8 @@
         values (0, #{studentId}, #{professorId}, #{username}, #{password}, #{phone}, #{birthDate}, #{email}, #{address}, #{departmentNumber})
     </insert>
 
-    <insert id="saveRole">
+
+    <insert id="saveRole" parameterType="com.koreait.koreaitsugang.entity.UserMst">
         insert into role_dtl
         values (0, #{userId}, 1)
     </insert>

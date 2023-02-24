@@ -24,9 +24,14 @@ public class AccountService {
         return userMst;
     }
 
-    public UserMst getUser(String userId){
-        return accountRepository.findUserByUserId(userId);
+
+
+    public void passwordEncoded(String password) {
+
     }
 
+    public UserMst getUser(int userId){
 
+        return accountRepository.findUserByUserId(userId);
+    }
 }

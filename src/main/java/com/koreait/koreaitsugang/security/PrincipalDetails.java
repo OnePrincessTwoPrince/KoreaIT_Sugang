@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class PrincipalDetails implements UserDetails, OAuth2User {
+public class PrincipalDetails implements UserDetails {
 
     @Getter
     private final UserMst user;
@@ -74,13 +74,4 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
         return true;
     }
 
-    @Override
-    public Map<String, Object> getAttributes() {
-        return response;
-    }
-
-    @Override
-    public String getName() {
-        return null;
-    }
 }

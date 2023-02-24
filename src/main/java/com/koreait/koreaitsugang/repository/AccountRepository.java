@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AccountRepository {
 
-    public UserMst findUserByUserId(String userId);
+    public UserMst findUserByUserId(int userId);
     public UserMst findUserByUsername(String userId);
 
     public int saveUser(UserMst user);
