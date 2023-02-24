@@ -17,7 +17,7 @@
 <!--        (#{subjectCode}, #{subejctClass}, #{studentId}, #{professorName}, #{insertTime}, #{grade})-->
 <!--    </insert>-->
 
-    <select id="searchCategory" resultType="com.koreait.koreaitsugang.entity.SubjectMst">
+    <select id="searchCategory" resultType="String">
         select distinct category
         from
             subject_mst

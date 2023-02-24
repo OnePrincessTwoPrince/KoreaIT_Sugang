@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
@@ -24,7 +24,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
@@ -32,8 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/mypage/**", "/security/**")
                 .authenticated()
-                .antMatchers("/admin/**")
-                .hasRole("ADMIN")
+//                .antMatchers("/admin/**")
+//                .hasRole("ADMIN")
                 .anyRequest()
                 .permitAll()
                 .and()
@@ -43,6 +42,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureForwardUrl("/account/login/error")
                 .defaultSuccessUrl("/announcement");
 
-
     }
+
 }

@@ -24,23 +24,6 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "get",
-<<<<<<< HEAD
-            url: "http://127.0.0.1:8000/api/admin/studyArea",
-            dataType: "json",
-            success: response => {
-                console.log(response);
-                returnData = response.data;
-            }, 
-            error: error => {
-                console.log(error);
-            }
-        });
-
-        return returnData;
-    }
-}
-
-=======
             url: "http://127.0.0.1:8000/api/search",
             data: searchObj,
             dataType: "json",
@@ -74,14 +57,14 @@ class SearchService {
         responseData.forEach((categoryObj,index) => {
           
             categoryList.innerHTML += `
-                <input type="radio" name="test1" class="info-radio" id="${categoryObj.category}" value="${categoryObj.category}">
-                <label for="${categoryObj.category}">${categoryObj.category}</label>
+                <input type="radio" name="test1" class="info-radio" id="${categoryObj}" value="${categoryObj}">
+                <label for="${categoryObj}">${categoryObj}</label>
             `;
 
             if(responseData.length -1 == index) {
                 categoryList.innerHTML += `
-                    <input type="radio" name="test1" class="info-radio" id="${categoryObj.category}" value="${categoryObj.category}">
-                    <label for="${categoryObj.category}">장바구니</label>
+                    <input type="radio" name="test1" class="info-radio" id="${categoryObj}" value="${categoryObj}">
+                    <label for="${categoryObj}">장바구니</label>
                 ` 
             }
         });
@@ -114,4 +97,3 @@ class SearchService {
 //         }); 
 //     }
 // }
->>>>>>> 0f12c4d2b441e3f620b923b4e7ff5969b86e740b

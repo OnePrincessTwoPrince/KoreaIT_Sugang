@@ -1,55 +1,58 @@
 window.onload = () => {
-    UserInformatinService.getInstance().loadCategories();
+    UserInformationService.getInstance().loadCategories();
 }
 
-class UserInformatinApi{
+
+class UserInformationApi{
 
     static #instance = null;
     static getInstance() {
         if(this.#instance == null) {
-            this.#instance = new UserInformatinApi();
+            this.#instance = new UserInformationApi();
         }
         return this.#instance;
     }
 
     getMajorCategories(){
-        let responseData = null;
+        let returnData = null;
 
         $.ajax({
             async: false,
             type: "get",
-            url: "http://localhost:8000/api/admin/major",
+            url: "http://localhost:8000/api/admin",
             dataType: "json",
-            suceess: responese => {
-                responeseData = responese.data;
+            success: response => {
+                console.log(response);
+                returnData = response.data;
             }, 
             error: error => {
                 console.log(error);
             }
         });
-        return responseData;
+
+        return returnData;
     }
 
 }
 
-class UserInformatinService{
+class UserInformationService{
     static #instance = null;
     static getInstance() {
         if(this.#instance == null) {
-            this.#instance = new UserInformatinService();
+            this.#instance = new UserInformationService();
         }
         return this.#instance;
     }
 
     loadCategories() {
-        const responeseData = UserInformatinApi.getInstance().getMajorCategories();
+        const responseData = UserInformationApi.getInstance().getMajorCategories();
 
         const categorySelect = document.querySelector(".category-select");
         categorySelect.innerHTML = `<option value="">전체조회</option>`;
 
-        responeseData.forEach(data => {
+        responseData.forEach(data => {
             categorySelect.innerHTML += `
-                <option value="${data.category}">${data.category}</option>
+                <option value="${data}">${data}</option>
             `;
         });
     }
