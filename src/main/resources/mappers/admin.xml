@@ -9,6 +9,12 @@
             department_name
         from
             department_mst;
+
+    <select id="searchCategory" resultType="com.koreait.koreaitsugang.entity.SubjectMst">
+        select
+            distinct category
+        from
+            subject_mst
     </select>
 
 </mapper>
