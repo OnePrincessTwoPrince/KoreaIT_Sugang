@@ -5,20 +5,21 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class AdminSearchReqDto {
+public class SearchUserReqDto {
+    private int page;
 
     private String searchValue;
 
-    private String major;
-
-    private int page;
+    private List<String> major;
 
     private int count;
 
+    private int userId;
+
+
     private int index;
 
-    public void setIndex(){
+    public void setIndex() {
         index = (page - 1) * count;
     }
-
 }

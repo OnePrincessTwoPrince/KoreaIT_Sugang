@@ -11,4 +11,7 @@
             department_mst;
     </select>
 
+    <select id="userInformation" resultType="list">
+
+    </select>
 </mapper>
