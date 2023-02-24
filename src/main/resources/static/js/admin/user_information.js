@@ -1,9 +1,9 @@
 window.onload = () => {
-    UserInformatinService.getInstance().loadCategories();
+    UserInformationService.getInstance().loadCategories();
 }
 
 
-class UserInformatinApi{
+class UserInformationApi{
 
     static #instance = null;
     static getInstance() {
@@ -35,17 +35,17 @@ class UserInformatinApi{
 
 }
 
-class UserInformatinService{
+class UserInformationService{
     static #instance = null;
     static getInstance() {
         if(this.#instance == null) {
-            this.#instance = new UserInformatinService();
+            this.#instance = new UserInformationService();
         }
         return this.#instance;
     }
 
     loadCategories() {
-        const responeseData = UserInformatinApi.getInstance().getMajorCategories();
+        const responeseData = UserInformationApi.getInstance().getMajorCategories();
 
         const categorySelect = document.querySelector(".category-select");
         categorySelect.innerHTML = `<option value="">전체조회</option>`;
