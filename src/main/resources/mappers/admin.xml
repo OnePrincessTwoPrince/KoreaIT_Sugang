@@ -6,15 +6,9 @@
 
     <select id="majorCategory" resultType="String">
         select
-            department_name
+            category
         from
             department_mst;
-    </select>
-    <select id="searchCategory" resultType="com.koreait.koreaitsugang.entity.SubjectMst">
-        select
-            distinct category
-        from
-            subject_mst
     </select>
 
 </mapper>

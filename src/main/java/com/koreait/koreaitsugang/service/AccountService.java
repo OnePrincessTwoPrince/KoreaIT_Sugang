@@ -12,20 +12,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AccountService {
 
-    @Autowired
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
 
-    public UserMst registerUser(UserMst userMst){
+    public void updatePassword(UserMst userMst) {
         userMst.setPassword(new BCryptPasswordEncoder().encode(userMst.getPassword()));
-
-        accountRepository.saveUser(userMst);
+        accountRepository.updatePassword(userMst);
         accountRepository.saveRole(userMst);
-
-        return userMst;
-    }
-
-    public void passwordEncoded(String password) {
-
     }
 
     public UserMst getUser(int userId){

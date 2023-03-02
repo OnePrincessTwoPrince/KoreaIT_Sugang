@@ -6,12 +6,11 @@
 
     <resultMap id="userMst" type="com.koreait.koreaitsugang.entity.UserMst">
         <result property="userId" column="user_id"></result>
-        <result property="studentId" column="student_id"></result>
-        <result property="professorId" column="professor_id"></result>
         <result property="username" column="username"></result>
         <result property="password" column="password"></result>
+        <result property="name" column="name"></result>
         <result property="phone" column="phone"></result>
-        <result property="birthDate" column="birthDate"></result>
+        <result property="birthDate" column="birth_date"></result>
         <result property="email" column="email"></result>
         <result property="address" column="address"></result>
         <result property="departmentNumber" column="department_number"></result>
@@ -33,12 +32,11 @@
     <select id="findUserByUsername" parameterType="String" resultMap="userMst">
         select
             um.user_id,
-            um.student_id,
-            um.professor_id,
             um.username,
             um.password,
+            um.name,
             um.phone,
-            um.birthDate,
+            um.birth_date,
             um.email,
             um.address,
             um.department_number,
@@ -53,15 +51,14 @@
             um.username = #{username}
     </select>
 
-    <select id="findUserByUserId" parameterType="integer" resultMap="userMst">
+    <select id="findUserByUserId" parameterType="Integer" resultMap="userMst">
         select
             um.user_id,
-            um.student_id,
-            um.professor_id,
             um.username,
             um.password,
+            um.name,
             um.phone,
-            um.birthDate,
+            um.birth_date,
             um.email,
             um.address,
             um.department_number,
@@ -76,14 +73,18 @@
             um.user_id = #{userId}
     </select>
 
-    <insert id="saveUser" parameterType="com.koreait.koreaitsugang.entity.UserMst" useGeneratedKeys="true" keyProperty="userId">
-        insert in user_mst
-        values (0, 1, 2, #{username}, #{password}, #{phone}, #{birthDate}, #{email}, #{address}, #{departmentNumber})
-    </insert>
+    <update id="updatePassword" parameterType="com.koreait.koreaitsugang.entity.UserMst">
+        update
+            user_mst
+        set
+            password = #{password}
+        where
+            user_id = #{userId}
+    </update>
 
     <insert id="saveRole" parameterType="com.koreait.koreaitsugang.entity.UserMst">
         insert into role_dtl
-        values (0, #{userId}, 1)
+        values (0, #{userId}, #{roleId})
     </insert>
 
 </mapper>
