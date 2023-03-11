@@ -5,37 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class SubjectMst {
-
     private int subjectCode;
-
-    private int subjectYear;
-
-    private int subjectSemester;
-
-    private String collegeName;
-
-    private String departmentName;
-
-    private int subjectGrade;
-
-    private String category;
-
-    private String subjectName;
-
-    private int subjectClass;
-
-    private int credit;
-
-    private String professorName;
-
-    private String lectureTime;
-
-    private String building;
-
-    private int maxPerson;
 }

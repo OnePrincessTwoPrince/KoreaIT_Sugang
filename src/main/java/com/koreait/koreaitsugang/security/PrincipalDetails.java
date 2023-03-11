@@ -2,6 +2,7 @@ package com.koreait.koreaitsugang.security;
 
 import com.koreait.koreaitsugang.entity.RoleDtl;
 import com.koreait.koreaitsugang.entity.RoleMst;
+import com.koreait.koreaitsugang.entity.StudentDtl;
 import com.koreait.koreaitsugang.entity.UserMst;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,7 +30,8 @@ public class PrincipalDetails implements UserDetails {
         ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
         List<RoleDtl> roleDtlList = user.getRoleDtl();
-        for(int i = 0; i < roleDtlList.size(); i++) {
+
+        for (int i = 0; i< roleDtlList.size(); i++) {
             RoleDtl dtl = roleDtlList.get(i);
             RoleMst roleMst = dtl.getRoleMst();
             String roleName = roleMst.getRoleName();
@@ -42,7 +44,7 @@ public class PrincipalDetails implements UserDetails {
             };
             authorities.add(role);
         }
-       return authorities;
+        return authorities;
     }
 
     @Override
@@ -74,6 +76,5 @@ public class PrincipalDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 
 }

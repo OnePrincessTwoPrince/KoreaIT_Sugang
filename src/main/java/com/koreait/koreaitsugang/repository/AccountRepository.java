@@ -5,10 +5,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface AccountRepository {
+
     public UserMst findUserByUserId(int userId);
     public UserMst findUserByUsername(String username);
 
-    public int updatePassword(UserMst user);
+    public int saveUser(UserMst user);
     public int saveRole(UserMst user);
+
 
 }

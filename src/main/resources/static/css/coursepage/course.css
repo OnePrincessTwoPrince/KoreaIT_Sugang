@@ -19,7 +19,7 @@
     width: 1050px;
     height: 900px;
 
-    margin-left: 250px;    
+    margin-left: 237px;    
 }
 
 .title-item {
@@ -41,30 +41,22 @@
 }
 
 .search-title {
-    padding: 2px 3px 2px 3px;  
-}
-
-.title-box {
-    margin: 0px;
-    padding: 0px;
-    width: 50px;
+    padding: 3px 5px 3px 5px;  
 }
 
 .title-text{
-    font-size: 14px;
+    padding: 0px 8px;
+    font-size: 15px;
     font-weight: 400;
 }
-.info {
-    flex-direction: row;
-}
-.info-radio {
-    margin: 0px 1px;
+
+.info-checkbox {
+    margin: 0px 5px;
 }
 
 .info-text {
     margin: 0px 10px 0px 0px;
     font-size: 13px;
-    cursor: pointer;
 }
 
 .title-container {
@@ -92,28 +84,9 @@
 }
 
 .opened-table th {
-    padding: 10px 0px;
+    padding: 15px 0px;
     font-size: 15px;
 
-}
-
-.submit-button1{
-    padding: 3px 5px;
-
-    border: 1px solid #2804f7;
-    background-color: #2804f7;
-    border-radius: 4px;
-
-    font-size: 12px;
-    font-weight: 600;
-    color: #f0f0f0;
-
-    cursor: pointer;
-}
-
-.submit-button1:hover {
-    background-color: #f0f0f0;
-    color: #2804f7;
 }
 
 .page-controller {
@@ -203,33 +176,13 @@ hr {
 
     border-collapse: collapse;
     
-    text-align: center;
+    
 }
 
-.opened-table td{
-    text-align: center;
-    font-size: 13px;
+.confirmed-table th {
+    padding: 15px 0px;
+    font-size: 15px;
 
-    height: 5px;
-}
-
-.submit-button2{
-    padding: 3px 5px;
-
-    border: 1px solid #fa3333;
-    background-color: #fa3333;
-    border-radius: 4px;
-
-    font-size: 12px;
-    font-weight: 600;
-    color: #f0f0f0;
-
-    cursor: pointer;
-}
-
-.submit-button2:hover {
-    background-color: #f0f0f0;
-    color: #fa3333;
 }
 
 .schedule-container {
