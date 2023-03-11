@@ -118,6 +118,10 @@ button:not(:disabled):hover {
     width: 1050px;
 }
 
+.content-table th, .content-table td{
+    text-align: center;
+}
+
 .page-controller {
     display: flex;
     justify-content: center;

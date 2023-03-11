@@ -42,7 +42,7 @@ public class SearchService {
                 .userId(userId)
                 .build();
 
-       return sugangRepository.saveCourse(pocketMst);
+        return sugangRepository.saveCourse(pocketMst);
     }
 
     public OpenCourse loadCourses(PocketMst pocketMst) {

@@ -15,3 +15,6 @@ spring:
 mybatis:
   mapper-locations:
     - /mappers/*
+
+file:
+  path: C:/koreaITproject/KoreaIT_Sugang/images/

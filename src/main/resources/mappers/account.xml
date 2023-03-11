@@ -31,55 +31,55 @@
 
     <select id="findUserByUsername" parameterType="String" resultMap="userMst">
         select
-            um.user_id,
-            um.username,
-            um.password,
-            um.name,
-            um.phone,
-            um.birth_date,
-            um.email,
-            um.address,
-            um.department_number,
+        um.user_id,
+        um.username,
+        um.password,
+        um.name,
+        um.phone,
+        um.birth_date,
+        um.email,
+        um.address,
+        um.department_number,
 
-            rd.role_id,
-            rm.role_name
+        rd.role_id,
+        rm.role_name
         from
-            user_mst um
-            left outer join role_dtl rd on(rd.user_id = um.user_id)
-            left outer join role_mst rm on(rm.role_id = rd.role_id)
+        user_mst um
+        left outer join role_dtl rd on(rd.user_id = um.user_id)
+        left outer join role_mst rm on(rm.role_id = rd.role_id)
         where
-            um.username = #{username}
+        um.username = #{username}
     </select>
 
     <select id="findUserByUserId" parameterType="Integer" resultMap="userMst">
         select
-            um.user_id,
-            um.username,
-            um.password,
-            um.name,
-            um.phone,
-            um.birth_date,
-            um.email,
-            um.address,
-            um.department_number,
+        um.user_id,
+        um.username,
+        um.password,
+        um.name,
+        um.phone,
+        um.birth_date,
+        um.email,
+        um.address,
+        um.department_number,
 
-            rd.role_id,
-            rm.role_name
+        rd.role_id,
+        rm.role_name
         from
-            user_mst um
-            left outer join role_dtl rd on(rd.user_id = um.user_id)
-            left outer join role_mst rm on(rm.role_id = rd.role_id)
+        user_mst um
+        left outer join role_dtl rd on(rd.user_id = um.user_id)
+        left outer join role_mst rm on(rm.role_id = rd.role_id)
         where
-            um.user_id = #{userId}
+        um.user_id = #{userId}
     </select>
 
     <update id="updatePassword" parameterType="com.koreait.koreaitsugang.entity.UserMst">
         update
-            user_mst
+        user_mst
         set
-            password = #{password}
+        password = #{password}
         where
-            user_id = #{userId}
+        user_id = #{userId}
     </update>
 
     <insert id="saveRole" parameterType="com.koreait.koreaitsugang.entity.UserMst">

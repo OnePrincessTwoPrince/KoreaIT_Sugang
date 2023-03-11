@@ -32,7 +32,7 @@ public class AccountApi {
                 .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", true));
     }
-    
+
     @GetMapping("/user/{userId}")
     public ResponseEntity<? extends CMRespDto<? extends UserMst>> getUser(@PathVariable int userId){
         return ResponseEntity

@@ -19,7 +19,7 @@
     width: 1050px;
     height: 900px;
 
-    margin-left: 250px;    
+    margin-left: 250px;
 }
 
 .title-item {
@@ -37,11 +37,11 @@
     line-height: 25px;
     vertical-align: middle;
 
-    background-color: #ffffff;    
+    background-color: #ffffff;
 }
 
 .search-title {
-    padding: 2px 3px 2px 3px;  
+    padding: 2px 3px 2px 3px;
 }
 
 .title-box {
@@ -88,7 +88,7 @@
     height: 350px;
 
     border-collapse: collapse;
-    
+
 }
 
 .opened-table th {
@@ -202,7 +202,7 @@ hr {
     height: 250px;
 
     border-collapse: collapse;
-    
+
     text-align: center;
 }
 

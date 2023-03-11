@@ -1,10 +1,14 @@
 package com.koreait.koreaitsugang.entity;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -13,6 +17,8 @@ import java.util.List;
 @Data
 public class UserMst {
     private int userId;
+
+    private String category;
 
     private String username;
 
@@ -24,12 +30,16 @@ public class UserMst {
 
     private String birthDate;
 
+    @Email
     private String email;
 
     private String address;
 
-    private int departmentNumber;
+    private String departmentNumber;
+
+    private int grade;
 
     private List<RoleDtl> roleDtl;
+
 
 }

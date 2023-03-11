@@ -6,19 +6,19 @@
 
     <select id="searchCategory" parameterType="string" resultType="com.koreait.koreaitsugang.entity.ClassificationView">
         select
-            classification_id,
-            classification
+        classification_id,
+        classification
         from
-            classification_view
+        classification_view
     </select>
 
     <select id="searchTotalCourse"
             parameterType="com.koreait.koreaitsugang.web.dto.SearchSugangReqDto"
             resultType="integer">
         select
-            count(*)
+        count(*)
         from
-            subject_mst
+        subject_mst
         where
         1 = 1
         <if test='classification != null and classification !=""'>
@@ -33,15 +33,15 @@
             parameterType="com.koreait.koreaitsugang.web.dto.SearchSugangReqDto"
             resultType="com.koreait.koreaitsugang.entity.OpenCourse">
         select
-            classification,
-            subject_code as subjectCode,
-            subject_name as subjectName,
-            credit,
-            professor_name as professorName,
-            lecture_time as lectureTime,
-            building
+        classification,
+        subject_code as subjectCode,
+        subject_name as subjectName,
+        credit,
+        professor_name as professorName,
+        lecture_time as lectureTime,
+        building
         from
-            subject_mst
+        subject_mst
         where
         1 = 1
         <if test='searchValue != null and searchValue != ""'>
@@ -60,21 +60,21 @@
 
     <select id="availabilityApply" resultType="integer">
         select
-            *
+        *
         from
-            pocket_mst
+        pocket_mst
         where
-            subject_code = #{subjectCode}
+        subject_code = #{subjectCode}
         and user_id = #{userId}
     </select>
 
     <select id="loadUserId" resultType="integer">
         select
-            user_id
+        user_id
         from
-            pocket_mst
+        pocket_mst
         where
-            user_id = #{userId}
+        user_id = #{userId}
     </select>
 
     <insert id="saveCourse"
@@ -87,19 +87,19 @@
             parameterType="com.koreait.koreaitsugang.entity.PocketMst"
             resultType="com.koreait.koreaitsugang.entity.OpenCourse">
         select
-            sm.classification,
-            sm.subject_code as subjectCode,
-            sm.subject_name as subjectName,
-            sm.credit,
-            sm.professor_name as professorName,
-            sm.lecture_time as lectureTime,
-            sm.building,
-            pm.user_id as userId
+        sm.classification,
+        sm.subject_code as subjectCode,
+        sm.subject_name as subjectName,
+        sm.credit,
+        sm.professor_name as professorName,
+        sm.lecture_time as lectureTime,
+        sm.building,
+        pm.user_id as userId
         from
-            subject_mst sm
-            inner join pocket_mst pm on (pm.subject_code = sm.subject_code)
+        subject_mst sm
+        inner join pocket_mst pm on (pm.subject_code = sm.subject_code)
         where
-            pm.user_id = #{userId}
-            and pm.subject_code = #{subjectCode}
+        pm.user_id = #{userId}
+        and pm.subject_code = #{subjectCode}
     </select>
 </mapper>

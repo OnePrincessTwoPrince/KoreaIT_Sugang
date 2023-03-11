@@ -3,7 +3,7 @@ window.onload = () => {
     SearchService.getInstance().clearCourseList();
 
     ComponentEvent.getInstance().addClickEventCategoryRadios();
-} 
+}
 
 const searchObj = {
     page: 1,
@@ -134,16 +134,11 @@ class SearchService {
         }
         return this.#instance;
     }
-    
-    // setMexPage() {
-    //     const totalCount = SearchApi.getInstance().getTotalCount();
-    //     maxPage = totalCount % 10 == 0 ? totalCount / 10 : Math.floor(totalCount / 10) + 1;
-    // }
-    
+
     loadCategories() {
         const classificationList = document.querySelector(".info");
         classificationList.innerHTML = ``;
-        
+
         const responseData = SearchApi.getInstance().getCategories();
         responseData.forEach((classificationObj,index) => {
             classificationList.innerHTML += `
@@ -159,14 +154,14 @@ class SearchService {
             }
         });
 
-        
+
     }
 
     clearCourseList(){
         const pageController = document.querySelector(".opened-table tbody");
         pageController.innerHTML = "";
     }
-    
+
 
     loadOpenCourse() {
         const responseData = SearchApi.getInstance().getOpenCourse(searchObj);
@@ -200,9 +195,9 @@ class SearchService {
         pageController.innerHTML = "";
 
         const totalCount = SearchApi.getInstance().getTotalCount(searchObj);
-        const maxPageNumber = totalCount % searchObj.count == 0 
-                            ? Math.floor(totalCount / searchObj.count) 
-                            : Math.floor(totalCount / searchObj.count) + 1; 
+        const maxPageNumber = totalCount % searchObj.count == 0
+                            ? Math.floor(totalCount / searchObj.count)
+                            : Math.floor(totalCount / searchObj.count) + 1;
 
         pageController.innerHTML = `
             <a href="javascript:void(0)" class="pre-button disabled">이전</a>
@@ -210,7 +205,7 @@ class SearchService {
             </ul>
             <a href="javascript:void(0)" class="next-button disabled">다음</a>
         `;
-        
+
         if(searchObj.page != 1) {
             const preButton = pageController.querySelector(".pre-button");
             preButton.classList.remove("disabled");
@@ -231,16 +226,16 @@ class SearchService {
             }
         }
 
-        const startIndex = searchObj.page % 5 == 0 
-                        ? searchObj.page - 4 
+        const startIndex = searchObj.page % 5 == 0
+                        ? searchObj.page - 4
                         : searchObj.page - (searchObj.page % 5) + 1;
-        
+
         const endIndex = startIndex + 4 <= maxPageNumber ? startIndex + 4 : maxPageNumber;
 
         const pageNumbers = document.querySelector(".page-numbers");
 
         for(let i = startIndex; i <= endIndex; i++) {
-            pageNumbers.innerHTML += ` 
+            pageNumbers.innerHTML += `
                 <a href="javascript:void(0)"class ="page-button ${i == searchObj.page ? "disabled" : ""}"><li>${i}</li></a>
             `;
         }
@@ -251,7 +246,7 @@ class SearchService {
             if(pageNumber != searchObj.page) {
                 button.onclick = () => {
                     searchObj.page = pageNumber;
-           
+
                 }
             }
         });
@@ -272,7 +267,7 @@ class ComponentEvent {
         radios.forEach(radio => {
             radio.onclick = () => {
                 searchObj.classification.splice(0);
-                
+
                 if(radio.checked) {
                     searchObj.classification.push(radio.value);
                     while(subjectCode.length != 0) {
@@ -292,13 +287,13 @@ class ComponentEvent {
     addClickApplyCourseButton() {
         const inputApplyCourse = document.querySelectorAll(".submit-button1");
         const inputCourseTable = document.querySelector(".confirmed-table tbody");
-        
+
         inputApplyCourse.forEach((button, index) => {
             button.onclick = () => {
                 subjectCode[index].userId = PrincipalApi.getInstance().getPrincipal().user.userId;
                 const applyData = SearchApi.getInstance().applyCourse(subjectCode[index]);
                 console.log(applyData);
-    
+
                 inputCourseTable.innerHTML += `
                 <tr>
                     <td><button type="submit" class="submit-button2">삭제</button></td>
@@ -313,6 +308,6 @@ class ComponentEvent {
                 `;
             }
         })
-        
+
     }
 }
