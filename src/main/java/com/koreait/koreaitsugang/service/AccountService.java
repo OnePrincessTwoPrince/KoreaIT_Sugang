@@ -1,5 +1,6 @@
 package com.koreait.koreaitsugang.service;
 
+import com.koreait.koreaitsugang.entity.RoleDtl;
 import com.koreait.koreaitsugang.entity.UserMst;
 import com.koreait.koreaitsugang.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,10 @@ public class AccountService {
         accountRepository.updatePassword(userMst);
 
         return userMst;
+    }
+
+    public int saveRoleId(RoleDtl roleDtl) {
+        return accountRepository.saveRole(roleDtl);
     }
 
     public UserMst getUser(int userId){

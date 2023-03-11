@@ -1,6 +1,7 @@
 package com.koreait.koreaitsugang.web.api;
 
 
+import com.koreait.koreaitsugang.entity.RoleDtl;
 import com.koreait.koreaitsugang.entity.UserMst;
 import com.koreait.koreaitsugang.security.PrincipalDetails;
 import com.koreait.koreaitsugang.service.AccountService;
@@ -13,6 +14,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.URI;
 
 
 @Slf4j
@@ -24,9 +26,18 @@ public class AccountApi {
     private AccountService accountService;
 
     @PutMapping("/encodePassword/{userId}")
-    public ResponseEntity<? extends CMRespDto<?>> encodePassword(@PathVariable int userId, @RequestBody @Valid UserMst userMst){
+    public ResponseEntity<? extends CMRespDto<?>> encodePassword(@RequestBody @Valid UserMst userMst){
 
         accountService.updatePassword(userMst);
+
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", true));
+    }
+
+    @PostMapping("/saveRoleId")
+    public ResponseEntity<?> saveRoleId(@RequestBody RoleDtl roleDtl) {
+        accountService.saveRoleId(roleDtl);
 
         return ResponseEntity
                 .ok()

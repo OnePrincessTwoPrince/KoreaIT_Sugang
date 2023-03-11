@@ -82,7 +82,7 @@
         user_id = #{userId}
     </update>
 
-    <insert id="saveRole" parameterType="com.koreait.koreaitsugang.entity.UserMst">
+    <insert id="saveRole" parameterType="com.koreait.koreaitsugang.entity.RoleDtl">
         insert into role_dtl
         values (0, #{userId}, #{roleId})
     </insert>
