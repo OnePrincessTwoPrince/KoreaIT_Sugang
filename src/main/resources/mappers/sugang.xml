@@ -4,27 +4,12 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.koreait.koreaitsugang.repository.SugangRepository">
 
-<!--    <insert id="confirmedApplication"-->
-<!--            parameterType="com.koreait.koreaitsugang.web.dto.SubjectReqDto">-->
-<!--        insert into confirmedApplication-->
-<!--        values-->
-<!--        (#{category},#{subjectCode},#{subjectName},#{credit}, #{professorName}, #{building}, #{lectureTime}-->
-<!--    </insert>-->
-<!--    <insert id="fastsugangapplication"-->
-<!--            parameterType="com.koreait.koreaitsugang.web.dto.FastSugangReqDto">-->
-<!--        insert into confirmed_mst-->
-<!--        values-->
-<!--        (#{subjectCode}, #{subejctClass}, #{studentId}, #{professorName}, #{insertTime}, #{grade})-->
-<!--    </insert>-->
-
     <select id="searchCategory" resultType="String">
         select distinct category
         from
             subject_mst
     </select>
 
-<<<<<<< HEAD
-=======
     <select id="searchCourse"
             parameterType="com.koreait.koreaitsugang.web.dto.SearchSugangReqDto"
             resultType="com.koreait.koreaitsugang.entity.OpenCourse">
@@ -69,5 +54,4 @@
         values (0, #{subjectCode}, #{userId})
     </insert>
 
->>>>>>> parent of a4913de (지금까지 한거 올린거)
 </mapper>
