@@ -17,7 +17,6 @@ import java.nio.charset.StandardCharsets;
 public class WebMvcConfig implements WebMvcConfigurer {
     @Value("${file.path}")
     private String filePath;
-
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedMethods("*").allowedOrigins("*");

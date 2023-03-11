@@ -4,54 +4,23 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.koreait.koreaitsugang.repository.SugangRepository">
 
+<!--    <insert id="confirmedApplication"-->
+<!--            parameterType="com.koreait.koreaitsugang.web.dto.SubjectReqDto">-->
+<!--        insert into confirmedApplication-->
+<!--        values-->
+<!--        (#{category},#{subjectCode},#{subjectName},#{credit}, #{professorName}, #{building}, #{lectureTime}-->
+<!--    </insert>-->
+<!--    <insert id="fastsugangapplication"-->
+<!--            parameterType="com.koreait.koreaitsugang.web.dto.FastSugangReqDto">-->
+<!--        insert into confirmed_mst-->
+<!--        values-->
+<!--        (#{subjectCode}, #{subejctClass}, #{studentId}, #{professorName}, #{insertTime}, #{grade})-->
+<!--    </insert>-->
+
     <select id="searchCategory" resultType="String">
         select distinct category
         from
             subject_mst
     </select>
-
-    <select id="searchCourse"
-            parameterType="com.koreait.koreaitsugang.web.dto.SearchSugangReqDto"
-            resultType="com.koreait.koreaitsugang.entity.OpenCourse">
-        select
-            classification,
-            subject_code as subjectCode,
-            subject_name as subjectName,
-            credit,
-            professor_name as professorName,
-            lecture_time as lectureTime,
-            building
-        from
-            subject_mst
-        where
-        1 = 1
-        <if test='searchValue != null and searchValue != ""'>
-            and classification like concat('%', #{searchValue}, '%')
-        </if>
-        <if test='classification != null'>
-            and classification in
-            <foreach collection="classification" item="categoryName" open="(" close=")" separator=",">
-                #{categoryName}
-            </foreach>
-        </if>
-        <if test='limit == "Y"'>
-            limit #{index}, #{count};
-        </if>
-    </select>
-
-    <select id="availabilityApply" resultType="integer">
-        select
-            count(*)
-        from
-            pocket_mst
-        where
-            subject_code = #{subjectCode}
-    </select>
-
-    <insert id="saveCourse"
-            parameterType="com.koreait.koreaitsugang.entity.PocketMst">
-        insert into pocket_mst
-        values (0, #{subjectCode}, #{userId})
-    </insert>
 
 </mapper>
