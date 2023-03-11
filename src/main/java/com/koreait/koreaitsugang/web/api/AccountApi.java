@@ -5,15 +5,11 @@ import com.koreait.koreaitsugang.entity.UserMst;
 import com.koreait.koreaitsugang.security.PrincipalDetails;
 import com.koreait.koreaitsugang.service.AccountService;
 import com.koreait.koreaitsugang.web.dto.CMRespDto;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -28,7 +24,7 @@ public class AccountApi {
     private AccountService accountService;
 
     @PutMapping("/encodePassword/{userId}")
-    public ResponseEntity<? extends CMRespDto<?>> encodePassword(@PathVariable int userId, @RequestBody @Valid UserMst userMst, BindingResult bindingResult){
+    public ResponseEntity<? extends CMRespDto<?>> encodePassword(@PathVariable int userId, @RequestBody @Valid UserMst userMst){
 
         accountService.updatePassword(userMst);
 

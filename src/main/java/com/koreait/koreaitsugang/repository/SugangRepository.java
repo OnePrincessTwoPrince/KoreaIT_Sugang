@@ -18,9 +18,13 @@ public interface SugangRepository {
 
     public List<OpenCourse> searchCourse(SearchSugangReqDto searchSugangReqDto);
 
+
+    public int loadUserId(int userId);
+
     public int availabilityApply(int subjectCode);
 
     public int saveCourse(PocketMst pocketMst);
 
+    public OpenCourse loadCourse(PocketMst pocketMst);
 
 }

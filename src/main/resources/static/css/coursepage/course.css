@@ -19,7 +19,7 @@
     width: 1050px;
     height: 900px;
 
-    margin-left: 237px;    
+    margin-left: 250px;    
 }
 
 .title-item {
@@ -41,17 +41,24 @@
 }
 
 .search-title {
-    padding: 3px 5px 3px 5px;  
+    padding: 2px 3px 2px 3px;  
+}
+
+.title-box {
+    margin: 0px;
+    padding: 0px;
+    width: 50px;
 }
 
 .title-text{
-    padding: 0px 8px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
 }
-
+.info {
+    flex-direction: row;
+}
 .info-radio {
-    margin: 0px 5px;
+    margin: 0px 1px;
 }
 
 .info-text {
@@ -194,7 +201,9 @@ hr {
     width: 100%;
     height: 250px;
 
-    border-collapse: collapse;   
+    border-collapse: collapse;
+    
+    text-align: center;
 }
 
 .opened-table td{
@@ -202,6 +211,25 @@ hr {
     font-size: 13px;
 
     height: 5px;
+}
+
+.submit-button2{
+    padding: 3px 5px;
+
+    border: 1px solid #fa3333;
+    background-color: #fa3333;
+    border-radius: 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+    color: #f0f0f0;
+
+    cursor: pointer;
+}
+
+.submit-button2:hover {
+    background-color: #f0f0f0;
+    color: #fa3333;
 }
 
 .schedule-container {

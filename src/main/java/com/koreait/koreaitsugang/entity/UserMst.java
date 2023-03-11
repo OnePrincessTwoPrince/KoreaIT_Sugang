@@ -32,5 +32,4 @@ public class UserMst {
 
     private List<RoleDtl> roleDtl;
 
-
 }

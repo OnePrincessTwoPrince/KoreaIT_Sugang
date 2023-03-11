@@ -60,11 +60,21 @@
 
     <select id="availabilityApply" resultType="integer">
         select
-            count(*)
+            *
         from
             pocket_mst
         where
             subject_code = #{subjectCode}
+        and user_id = #{userId}
+    </select>
+
+    <select id="loadUserId" resultType="integer">
+        select
+            user_id
+        from
+            pocket_mst
+        where
+            user_id = #{userId}
     </select>
 
     <insert id="saveCourse"
@@ -73,4 +83,23 @@
         values (0, #{subjectCode}, #{userId})
     </insert>
 
+    <select id="loadCourse"
+            parameterType="com.koreait.koreaitsugang.entity.PocketMst"
+            resultType="com.koreait.koreaitsugang.entity.OpenCourse">
+        select
+            sm.classification,
+            sm.subject_code as subjectCode,
+            sm.subject_name as subjectName,
+            sm.credit,
+            sm.professor_name as professorName,
+            sm.lecture_time as lectureTime,
+            sm.building,
+            pm.user_id as userId
+        from
+            subject_mst sm
+            inner join pocket_mst pm on (pm.subject_code = sm.subject_code)
+        where
+            pm.user_id = #{userId}
+            and pm.subject_code = #{subjectCode}
+    </select>
 </mapper>

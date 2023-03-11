@@ -1,7 +1,6 @@
 window.onload = () => {
     SearchService.getInstance().loadCategories();
     SearchService.getInstance().clearCourseList();
-    SearchService.getInstance().loadOpenCourse();
 
     ComponentEvent.getInstance().addClickEventCategoryRadios();
 } 
@@ -13,6 +12,8 @@ const searchObj = {
     limit: "Y",
     count: 8
 }
+
+const subjectCode = new Array();
 
 class SearchApi {
     static #instance = null;
@@ -37,7 +38,6 @@ class SearchApi {
             error: error => {
                 console.log(error);
             }
-
         });
         return returnData;
     }
@@ -49,11 +49,14 @@ class SearchApi {
             async: false,
             type: "get",
             url: "http://localhost:8000/api/search/total",
-            data: searchObj,
+            data: {
+                "classification" : searchObj.classification,
+                "searchValue" : searchObj.searchValue
+            },
             dataType: "json",
             success: response => {
-                 console.log(response);
                  returnData = response.data;
+                 console.log(response);
             },
             error: error => {
                 console.log(error);
@@ -63,7 +66,7 @@ class SearchApi {
         return returnData;
     }
 
-    getOpenCourse() {
+    getOpenCourse(searchObj) {
         let responseData = null;
 
         $.ajax({
@@ -81,6 +84,47 @@ class SearchApi {
         });
         return responseData;
     }
+
+    applyCourse(pocketObj){
+        let responseData = null;
+
+        $.ajax({
+            async: false,
+            type: "post",
+            url: `http://localhost:8000/api/apply`,
+            contentType: "application/json",
+            data: JSON.stringify(pocketObj),
+            dataType: "json",
+            success: response => {
+                responseData = response.data;
+                console.log(response);
+            },
+            error: error => {
+                console.log(error);
+            }
+        });
+        return responseData;
+    }
+
+    loadCourse(){
+        let responseData = null;
+
+        $.ajax({
+            async: false,
+            type: "get",
+            url: `http://localhost:8000/api/load`,
+            data: searchObj,
+            dataType: "json",
+            success: response => {
+                responseData = response.data;
+                console.log(response);
+            },
+            error: error => {
+                console.log(error);
+            }
+        });
+        return responseData;
+    }
 }
 class SearchService {
     static #instance = null;
@@ -90,11 +134,11 @@ class SearchService {
         }
         return this.#instance;
     }
-
-    setMexPage() {
-        const totalCount = SearchApi.getInstance().getTotalCount();
-        maxPage = totalCount % 10 == 0 ? totalCount / 10 : Math.floor(totalCount / 10) + 1;
-    }
+    
+    // setMexPage() {
+    //     const totalCount = SearchApi.getInstance().getTotalCount();
+    //     maxPage = totalCount % 10 == 0 ? totalCount / 10 : Math.floor(totalCount / 10) + 1;
+    // }
     
     loadCategories() {
         const classificationList = document.querySelector(".info");
@@ -114,6 +158,8 @@ class SearchService {
                 `;
             }
         });
+
+        
     }
 
     clearCourseList(){
@@ -123,12 +169,13 @@ class SearchService {
     
 
     loadOpenCourse() {
-        const responseData = SearchApi.getInstance().getOpenCourse();
+        const responseData = SearchApi.getInstance().getOpenCourse(searchObj);
         const openTable = document.querySelector(".opened-table tbody");
 
         openTable.innerHTML = ``;
 
         responseData.forEach((data, index) => {
+            subjectCode.push(data);
             openTable.innerHTML +=`
             <tr>
                 <td><button type="submit" class="submit-button1">신청</button></td>
@@ -145,7 +192,7 @@ class SearchService {
             `;
         });
         this.loadPageController();
-        
+        ComponentEvent.getInstance().addClickApplyCourseButton();
     }
 
     loadPageController() {
@@ -166,20 +213,20 @@ class SearchService {
         
         if(searchObj.page != 1) {
             const preButton = pageController.querySelector(".pre-button");
-            
+            preButton.classList.remove("disabled");
+
             preButton.onclick = () => {
                 searchObj.page--;
-                SearchService.getInstance().clearCourseList();
                 this.loadOpenCourse();
             }
         }
 
         if(searchObj.page != maxPageNumber) {
             const nextButton = pageController.querySelector(".next-button");
-            
+            nextButton.classList.remove("disabled");
+
             nextButton.onclick = () => {
                 searchObj.page++;
-                SearchService.getInstance().clearCourseList();
                 this.loadOpenCourse();
             }
         }
@@ -204,8 +251,7 @@ class SearchService {
             if(pageNumber != searchObj.page) {
                 button.onclick = () => {
                     searchObj.page = pageNumber;
-                    SearchService.getInstance().clearCourseList();
-                    this.loadOpenCourse();
+           
                 }
             }
         });
@@ -226,8 +272,12 @@ class ComponentEvent {
         radios.forEach(radio => {
             radio.onclick = () => {
                 searchObj.classification.splice(0);
+                
                 if(radio.checked) {
                     searchObj.classification.push(radio.value);
+                    while(subjectCode.length != 0) {
+                        subjectCode.pop(0);
+                    }
                     SearchService.getInstance().loadOpenCourse();
                 }
                 else {
@@ -236,7 +286,33 @@ class ComponentEvent {
                     SearchService.getInstance().clearCourseList();
                 }
             }
-            
         });
+    }
+
+    addClickApplyCourseButton() {
+        const inputApplyCourse = document.querySelectorAll(".submit-button1");
+        const inputCourseTable = document.querySelector(".confirmed-table tbody");
+        
+        inputApplyCourse.forEach((button, index) => {
+            button.onclick = () => {
+                subjectCode[index].userId = PrincipalApi.getInstance().getPrincipal().user.userId;
+                const applyData = SearchApi.getInstance().applyCourse(subjectCode[index]);
+                console.log(applyData);
+    
+                inputCourseTable.innerHTML += `
+                <tr>
+                    <td><button type="submit" class="submit-button2">삭제</button></td>
+                    <td>${subjectCode[index].classification}</td>
+                    <td>${subjectCode[index].subjectCode}</td>
+                    <td>${subjectCode[index].subjectName}</td>
+                    <td>${subjectCode[index].credit}</td>
+                    <td>${subjectCode[index].professorName}</td>
+                    <td>${subjectCode[index].building} / ${subjectCode[index].lectureTime}</td>
+                    <td>N</th>
+                </tr>
+                `;
+            }
+        })
+        
     }
 }

@@ -5,6 +5,7 @@ import com.koreait.koreaitsugang.entity.OpenCourse;
 import com.koreait.koreaitsugang.entity.PocketMst;
 import com.koreait.koreaitsugang.exception.CustomApplyCountException;
 import com.koreait.koreaitsugang.repository.SugangRepository;
+import com.koreait.koreaitsugang.security.PrincipalDetails;
 import com.koreait.koreaitsugang.web.dto.SearchNumberListReqDto;
 import com.koreait.koreaitsugang.web.dto.SearchSugangReqDto;
 import lombok.RequiredArgsConstructor;
@@ -34,20 +35,25 @@ public class SearchService {
         return sugangRepository.searchCourse(searchSugangReqDto);
     }
 
-    public void applyCourse(int subjectCode, int userId){
-        abilityApply(subjectCode);
+    public int applyCourse(int subjectCode, int userId){
 
         PocketMst pocketMst = PocketMst.builder()
                 .subjectCode(subjectCode)
                 .userId(userId)
                 .build();
 
-        sugangRepository.saveCourse(pocketMst);
+       return sugangRepository.saveCourse(pocketMst);
     }
 
-    private void abilityApply(int subjectCode){
-        int applyCount = sugangRepository.availabilityApply(subjectCode);
-        if (applyCount > 0) {
+    public OpenCourse loadCourses(PocketMst pocketMst) {
+        return sugangRepository.loadCourse(pocketMst);
+    }
+
+    private void abilityApply(int subjectCode, int userId){
+
+        int requestUser = sugangRepository.loadUserId(userId);
+
+        if (requestUser == 0) {
             Map<String, String> errorMap = new HashMap<>();
             errorMap.put("applyCountError", "이미 선택한 과목입니다.");
 
