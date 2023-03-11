@@ -24,7 +24,5 @@ public class AccountService {
         return accountRepository.findUserByUserId(userId);
     }
 
-    public
-
 }
 
