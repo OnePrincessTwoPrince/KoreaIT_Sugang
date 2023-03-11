@@ -29,9 +29,14 @@ public class AccountApi {
     @Autowired
     private AccountService accountService;
 
+<<<<<<< HEAD
     @ValidAspect
     @PostMapping("/password")
     public ResponseEntity<? extends CMRespDto<? extends UserMst>> passencode(@RequestBody @Valid UserMst userMst, BindingResult bindingResult) {
+=======
+    @PutMapping("/encodePassword/{userId}")
+    public ResponseEntity<? extends CMRespDto<?>> encodePassword(@PathVariable int userId, @RequestBody @Valid UserMst userMst, BindingResult bindingResult){
+>>>>>>> parent of a4913de (지금까지 한거 올린거)
 
         UserMst user = accountService.registerUser(userMst);
 

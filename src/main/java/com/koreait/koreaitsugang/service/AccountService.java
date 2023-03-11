@@ -15,6 +15,7 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
+<<<<<<< HEAD
     public UserMst registerUser(UserMst userMst){
         userMst.setPassword(new BCryptPasswordEncoder().encode(userMst.getPassword()));
 
@@ -22,6 +23,12 @@ public class AccountService {
         accountRepository.saveRole(userMst);
 
         return userMst;
+=======
+    public void updatePassword(UserMst userMst) {
+        userMst.setPassword(new BCryptPasswordEncoder().encode(userMst.getPassword()));
+        accountRepository.updatePassword(userMst);
+        accountRepository.saveRole(userMst);
+>>>>>>> parent of a4913de (지금까지 한거 올린거)
     }
 
     public void passwordEncoded(String password) {

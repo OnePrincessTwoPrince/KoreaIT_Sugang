@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class OpenCourse {
     private String classification;
 
-    private int subjectCode;
+    private String subjectCode;
 
     private String subjectName;
 
