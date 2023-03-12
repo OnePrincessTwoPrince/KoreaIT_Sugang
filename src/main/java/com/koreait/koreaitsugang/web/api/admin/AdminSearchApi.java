@@ -96,7 +96,9 @@ public class AdminSearchApi {
     @PostMapping("/admin/studentRegister")
     public ResponseEntity<CMRespDto<?>> registerStudent(@Valid @RequestBody AddStudentReqDto addStudentReqDto, BindingResult bindingResult){
         adminSearchService.registerStudent(addStudentReqDto);
-        return ResponseEntity.created(null).body(new CMRespDto<>(HttpStatus.CREATED.value(), "Successfully", true));
+        return ResponseEntity
+                .created(null)
+                .body(new CMRespDto<>(HttpStatus.CREATED.value(), "Successfully", true));
     }
 
     @ParamsAspect
@@ -104,12 +106,16 @@ public class AdminSearchApi {
     @PostMapping("/admin/professorRegister")
     public ResponseEntity<CMRespDto<?>> registerProfessor(@Valid @RequestBody AddProfessorReqDto addProfessorReqDto, BindingResult bindingResult){
         adminSearchService.registerProfessor(addProfessorReqDto);
-        return ResponseEntity.created(null).body(new CMRespDto<>(HttpStatus.CREATED.value(), "Successfully", true));
+        return ResponseEntity
+                .created(null)
+                .body(new CMRespDto<>(HttpStatus.CREATED.value(), "Successfully", true));
     }
 
     @GetMapping("/admin/user/{username}")
     public ResponseEntity<CMRespDto<Map<String, Object>>> getUser(@PathVariable String username){
-        return ResponseEntity.ok().body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully",adminSearchService.getUsernameAndImage(username)));
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully",adminSearchService.getUsernameAndImage(username)));
     }
 
     @ParamsAspect
@@ -117,7 +123,9 @@ public class AdminSearchApi {
     @PutMapping("/admin/user/{username}")
     public ResponseEntity<CMRespDto<?>> updateStudent(@Valid @RequestBody UpdateStudentReqDto updateStudentReqDto, BindingResult bindingResult){
         adminSearchService.modifyStudent(updateStudentReqDto);
-        return ResponseEntity.ok().body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully",true));
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully",true));
     }
 
 
@@ -125,18 +133,22 @@ public class AdminSearchApi {
     public ResponseEntity<CMRespDto<?>> removeUserImage(@PathVariable String username, @PathVariable int imageId){
         adminSearchService.removeUserImage(username);
 
-        return ResponseEntity.ok().body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", null));
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", null));
     }
 
     @GetMapping("/search")
     public ResponseEntity<CMRespDto<List<SubjectMst>>> searchSugang(@Valid SearchReqDto searchReqDto, BindingResult bindingResult){
-        return ResponseEntity.ok()
+        return ResponseEntity
+                .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully", adminSearchService.searchSugang(searchReqDto)));
     }
 
     @GetMapping("/sugangs/totalcount")
     public ResponseEntity<CMRespDto<?>> getSubjectTotalCount(SearchNumberListReqDto searchNumberListReqDto){
-        return ResponseEntity.ok()
+        return ResponseEntity
+                .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully", adminSearchService.getSubjectTotalCount(searchNumberListReqDto)));
     }
 
@@ -144,7 +156,8 @@ public class AdminSearchApi {
     @DeleteMapping("/sugangs")
     public ResponseEntity<CMRespDto<?>> deleteSubject(@RequestBody DeleteSubjectsReqDto deleteSubjectsReqDto){
         adminSearchService.deleteSubject(deleteSubjectsReqDto);
-        return ResponseEntity.ok()
+        return ResponseEntity
+                .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully", true));
     }
 
