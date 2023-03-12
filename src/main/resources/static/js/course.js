@@ -32,6 +32,7 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "get",
+<<<<<<< HEAD
             url: "http://localhost:8000/api/classification",
             dataType: "json",
             success : response => {
@@ -75,6 +76,9 @@ class SearchApi {
             async: false,
             type: "get",
             url: "http://localhost:8000/api/open",
+=======
+            url: "http://localhost:8000/api/search",
+>>>>>>> ft-05
             data: searchObj,
             dataType: "json",
             success : response => {
@@ -160,6 +164,7 @@ class SearchService {
     }
 
     loadCategories() {
+<<<<<<< HEAD
         const classificationList = document.querySelector(".info");
         classificationList.innerHTML = ``;
 
@@ -175,6 +180,25 @@ class SearchService {
                     <input type="radio" class="info-radio" name="openCourse" id="${classificationObj}" value="${classificationObj}">
                     <label for="장바구니">장바구니</label>
                 `;
+=======
+        const categoryList = document.querySelector(".info");
+        categoryList.innerHTML = ``;
+        
+        const responseData = SearchApi.getInstance().getCategory();
+        
+        responseData.forEach((categoryObj,index) => {
+          
+            categoryList.innerHTML += `
+                <input type="radio" name="test1" class="info-radio" id="${categoryObj}" value="${categoryObj}">
+                <label for="${categoryObj}"class="info-text">${categoryObj}</label>
+            `;
+
+            if(responseData.length -1 == index) {
+                categoryList.innerHTML += `
+                    <input type="radio" name="test1" class="info-radio" id="장바구니" value="장바구니">
+                    <label for="장바구니"class="info-text">장바구니</label>
+                ` 
+>>>>>>> ft-05
             }
         });
 
@@ -292,6 +316,7 @@ class ComponentEvent {
             radio.onclick = () => {
                 searchObj.classification.splice(0);
 
+<<<<<<< HEAD
                 if(radio.checked) {
                     searchObj.classification.push(radio.value);
                     while(subjectCode.length != 0) {
@@ -338,3 +363,9 @@ class ComponentEvent {
         });
     }
 }
+=======
+//             }
+//         }); 
+//     }
+// }
+>>>>>>> ft-05

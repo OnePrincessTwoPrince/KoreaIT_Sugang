@@ -2,34 +2,48 @@ package com.koreait.koreaitsugang.web.api.admin;
 
 import com.koreait.koreaitsugang.aop.annotation.ParamsAspect;
 import com.koreait.koreaitsugang.aop.annotation.ValidAspect;
+<<<<<<< HEAD
 import com.koreait.koreaitsugang.entity.UserMst;
 import com.koreait.koreaitsugang.service.admin.AdminSearchService;
 import com.koreait.koreaitsugang.web.dto.CMRespDto;
 import com.koreait.koreaitsugang.web.dto.admin.*;
+=======
+import com.koreait.koreaitsugang.entity.SubjectMst;
+import com.koreait.koreaitsugang.service.admin.AdminSearchService;
+import com.koreait.koreaitsugang.web.dto.*;
+>>>>>>> ft-05
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+<<<<<<< HEAD
 import org.springframework.web.multipart.MultipartFile;
+=======
+>>>>>>> ft-05
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/admin")
 public class AdminSearchApi {
 
     @Autowired
     private AdminSearchService adminSearchService;
 
+<<<<<<< HEAD
     @GetMapping("/admin/usersearch")
+=======
+    @GetMapping("")
+>>>>>>> ft-05
     public ResponseEntity<CMRespDto<?>> search(){
         return ResponseEntity.ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully",adminSearchService.Categories()));
     }
 
+<<<<<<< HEAD
     @GetMapping("/admin/userregister")
     public ResponseEntity<CMRespDto<?>> register(){
         return ResponseEntity.ok()
@@ -39,10 +53,17 @@ public class AdminSearchApi {
     @GetMapping("/admin/totalcount")
     public ResponseEntity<CMRespDto<?>> getUserTotalCount(AdminSearchReqDto adminSearchReqDto){
         return ResponseEntity.ok().body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully",adminSearchService.UserTotalCounts(adminSearchReqDto)));
+=======
+    @GetMapping("/sugang/{subjectCode}")
+    public ResponseEntity<CMRespDto<Map<String, Object>>> getSugang(@PathVariable("subjectCode") int subjectCode) {
+        return ResponseEntity.ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully",adminSearchService.getSugang(subjectCode)));
+>>>>>>> ft-05
     }
 
     @ParamsAspect
     @ValidAspect
+<<<<<<< HEAD
     @GetMapping("/admin/users")
     public ResponseEntity<CMRespDto<List<UserMst>>> searchUser(@Valid AdminSearchReqDto adminSearchReqDto, BindingResult bindingResult){
         return ResponseEntity
@@ -118,5 +139,46 @@ public class AdminSearchApi {
 
         return ResponseEntity.ok().body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", null));
     }
+=======
+    @GetMapping("/search")
+    public ResponseEntity<CMRespDto<List<SubjectMst>>> searchSugang(@Valid SearchReqDto searchReqDto, BindingResult bindingResult){
+        return ResponseEntity.ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully", adminSearchService.searchSugang(searchReqDto)));
+    }
+
+    @GetMapping("/sugangs/totalcount")
+    public ResponseEntity<CMRespDto<?>> getSubjectTotalCount(SearchNumberListReqDto searchNumberListReqDto){
+        return ResponseEntity.ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully", adminSearchService.getSubjectTotalCount(searchNumberListReqDto)));
+    }
+
+    @ParamsAspect
+    @DeleteMapping("/sugangs")
+    public ResponseEntity<CMRespDto<?>> deleteSubject(@RequestBody DeleteSubjectsReqDto deleteSubjectsReqDto){
+        adminSearchService.deleteSubject(deleteSubjectsReqDto);
+        return ResponseEntity.ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully", true));
+    }
+
+    @ParamsAspect
+    @ValidAspect
+    @PostMapping("/sugang")
+    public ResponseEntity<CMRespDto<?>> saveSubject(@RequestBody @Valid SubjectReqDto subjectReqDto, BindingResult bindingResult){
+        adminSearchService.saveSubject(subjectReqDto);
+        return ResponseEntity
+                .created(null)
+                .body(new CMRespDto<>(HttpStatus.CREATED.value(), "Successfully",true));
+    }
+
+    @ParamsAspect
+    @ValidAspect
+    @PatchMapping("/sugang/{subjectCode}")
+    public ResponseEntity<CMRespDto<?>> modifySubject(@PathVariable("subjectCode") int subjectCode, @Valid @RequestBody SubjectReqDto subjectReqDto, BindingResult bindingResult){
+        adminSearchService.modifySubject(subjectReqDto);
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", true));
+    }
+>>>>>>> ft-05
 }
 

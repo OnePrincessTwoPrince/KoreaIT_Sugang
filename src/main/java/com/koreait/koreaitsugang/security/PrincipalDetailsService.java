@@ -1,6 +1,7 @@
 
 package com.koreait.koreaitsugang.security;
 
+import com.koreait.koreaitsugang.aop.annotation.ParamsAspect;
 import com.koreait.koreaitsugang.entity.UserMst;
 import com.koreait.koreaitsugang.repository.AccountRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ public class PrincipalDetailsService implements UserDetailsService {
     @Autowired
     private AccountRepository accountRepository;
 
+    @ParamsAspect
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 

@@ -4,6 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+<<<<<<< HEAD
+=======
+
+>>>>>>> ft-05
 import java.util.List;
 
 @Builder
@@ -13,8 +17,11 @@ import java.util.List;
 public class UserMst {
     private int userId;
 
+<<<<<<< HEAD
     private String category;
 
+=======
+>>>>>>> ft-05
     private String username;
 
     private String password;
@@ -34,8 +41,12 @@ public class UserMst {
     private int grade;
 
     private List<RoleDtl> roleDtl;
+<<<<<<< HEAD
 
     private int roleId;
 
 
 }
+=======
+}
+>>>>>>> ft-05

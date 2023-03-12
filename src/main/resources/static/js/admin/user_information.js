@@ -1,9 +1,13 @@
 window.onload = () => {
+<<<<<<< HEAD
     UserInformatinService.getInstance().loadCategories();
     UserInformatinService.getInstance().loadUserList();
     ComponentEvent.getInstance().addClickEventSearchButton();
     ComponentEvent.getInstance().addClickEventDeleteButton();
     ComponentEvent.getInstance().addClickEventDeleteCheckAll();
+=======
+    UserInformationService.getInstance().loadCategories();
+>>>>>>> ft-05
 }
 
 let searchObj = {
@@ -15,12 +19,12 @@ let searchObj = {
     count : 10
 }
 
-class UserInformatinApi{
+class UserInformationApi{
 
     static #instance = null;
     static getInstance() {
         if(this.#instance == null) {
-            this.#instance = new UserInformatinApi();
+            this.#instance = new UserInformationApi();
         }
         return this.#instance;
     }
@@ -119,12 +123,21 @@ class UserInformatinApi{
 
 }
 
+<<<<<<< HEAD
 class UserInformatinService {
+=======
+class UserInformationService{
+>>>>>>> ft-05
     static #instance = null;
 
     static getInstance() {
+<<<<<<< HEAD
         if (this.#instance == null) {
             this.#instance = new UserInformatinService();
+=======
+        if(this.#instance == null) {
+            this.#instance = new UserInformationService();
+>>>>>>> ft-05
         }
         return this.#instance;
     }
@@ -189,7 +202,7 @@ class UserInformatinService {
     }
 
     loadCategories() {
-        const responeseData = UserInformatinApi.getInstance().getMajorCategories();
+        const responeseData = UserInformationApi.getInstance().getMajorCategories();
 
         const categorySelect = document.querySelector(".category-select");
         categorySelect.innerHTML = `<option value="전체조회">전체조회</option>`;

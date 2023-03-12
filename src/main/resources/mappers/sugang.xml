@@ -4,10 +4,28 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.koreait.koreaitsugang.repository.SugangRepository">
 
+<<<<<<< HEAD
     <select id="searchCategory" parameterType="string" resultType="com.koreait.koreaitsugang.entity.ClassificationView">
         select
         classification_id,
         classification
+=======
+<!--    <insert id="confirmedApplication"-->
+<!--            parameterType="com.koreait.koreaitsugang.web.dto.SubjectReqDto">-->
+<!--        insert into confirmedApplication-->
+<!--        values-->
+<!--        (#{category},#{subjectCode},#{subjectName},#{credit}, #{professorName}, #{building}, #{lectureTime}-->
+<!--    </insert>-->
+<!--    <insert id="fastsugangapplication"-->
+<!--            parameterType="com.koreait.koreaitsugang.web.dto.FastSugangReqDto">-->
+<!--        insert into confirmed_mst-->
+<!--        values-->
+<!--        (#{subjectCode}, #{subejctClass}, #{studentId}, #{professorName}, #{insertTime}, #{grade})-->
+<!--    </insert>-->
+
+    <select id="searchCategory" resultType="String">
+        select distinct classification
+>>>>>>> ft-05
         from
         classification_view
     </select>
