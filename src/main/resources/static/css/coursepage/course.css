@@ -58,6 +58,7 @@
     margin: 0px 13px 0px 0px;
     font-size: 13px;
     cursor: pointer;
+<<<<<<< HEAD
 }
 
 .subject-code-info {
@@ -94,6 +95,8 @@
     
     border-radius: 2px;
     font-weight: 600;
+=======
+>>>>>>> 66c67103ef1518def3131ce908c3d0f299a5acba
 }
 
 .title-container {

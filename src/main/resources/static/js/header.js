@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 66c67103ef1518def3131ce908c3d0f299a5acba
 class HeaderApi {
     static #instance = null;
     static getInstance() {

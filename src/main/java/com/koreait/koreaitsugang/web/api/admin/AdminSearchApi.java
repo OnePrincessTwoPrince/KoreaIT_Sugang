@@ -31,8 +31,12 @@ public class AdminSearchApi {
 
     @GetMapping("/sugang/{subjectCode}")
     public ResponseEntity<CMRespDto<Map<String, Object>>> getSugang(@PathVariable("subjectCode") int subjectCode) {
+<<<<<<< HEAD
         return ResponseEntity
                 .ok()
+=======
+        return ResponseEntity.ok()
+>>>>>>> 66c67103ef1518def3131ce908c3d0f299a5acba
                 .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully",adminSearchService.getSugang(subjectCode)));
     }
 
@@ -40,15 +44,23 @@ public class AdminSearchApi {
     @ValidAspect
     @GetMapping("/search")
     public ResponseEntity<CMRespDto<List<SubjectMst>>> searchSugang(@Valid SearchReqDto searchReqDto, BindingResult bindingResult){
+<<<<<<< HEAD
         return ResponseEntity
                 .ok()
+=======
+        return ResponseEntity.ok()
+>>>>>>> 66c67103ef1518def3131ce908c3d0f299a5acba
                 .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully", adminSearchService.searchSugang(searchReqDto)));
     }
 
     @GetMapping("/sugangs/totalcount")
     public ResponseEntity<CMRespDto<?>> getSubjectTotalCount(SearchNumberListReqDto searchNumberListReqDto){
+<<<<<<< HEAD
         return ResponseEntity
                 .ok()
+=======
+        return ResponseEntity.ok()
+>>>>>>> 66c67103ef1518def3131ce908c3d0f299a5acba
                 .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully", adminSearchService.getSubjectTotalCount(searchNumberListReqDto)));
     }
 
@@ -56,8 +68,12 @@ public class AdminSearchApi {
     @DeleteMapping("/sugangs")
     public ResponseEntity<CMRespDto<?>> deleteSubject(@RequestBody DeleteSubjectsReqDto deleteSubjectsReqDto){
         adminSearchService.deleteSubject(deleteSubjectsReqDto);
+<<<<<<< HEAD
         return ResponseEntity
                 .ok()
+=======
+        return ResponseEntity.ok()
+>>>>>>> 66c67103ef1518def3131ce908c3d0f299a5acba
                 .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully", true));
     }
 
