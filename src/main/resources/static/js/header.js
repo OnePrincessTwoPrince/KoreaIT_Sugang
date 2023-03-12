@@ -79,7 +79,7 @@ class HeaderService {
         <div class="menulist wrap">
             <li class="on"><a href="/announcement">공지사항</a></li>
             <li><a href="">강의시간표</a></li>
-            <li><a href="/course">수강신청</a></li>
+            <li><a href="http://localhost:8000/course">수강신청</a></li>
             <li><a href="">수강확정/대기내역</a></li>
             <li><a href="">학점이수현황</a></li>
             <li><a href="">재수강신청</a></li>

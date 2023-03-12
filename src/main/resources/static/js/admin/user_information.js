@@ -1,13 +1,12 @@
 window.onload = () => {
-<<<<<<< HEAD
     UserInformatinService.getInstance().loadCategories();
     UserInformatinService.getInstance().loadUserList();
     ComponentEvent.getInstance().addClickEventSearchButton();
     ComponentEvent.getInstance().addClickEventDeleteButton();
     ComponentEvent.getInstance().addClickEventDeleteCheckAll();
-=======
+
     UserInformationService.getInstance().loadCategories();
->>>>>>> ft-05
+
 }
 
 let searchObj = {
@@ -123,21 +122,12 @@ class UserInformationApi{
 
 }
 
-<<<<<<< HEAD
-class UserInformatinService {
-=======
-class UserInformationService{
->>>>>>> ft-05
-    static #instance = null;
 
+class UserInformationService{
+    static #instance = null;
     static getInstance() {
-<<<<<<< HEAD
-        if (this.#instance == null) {
-            this.#instance = new UserInformatinService();
-=======
         if(this.#instance == null) {
             this.#instance = new UserInformationService();
->>>>>>> ft-05
         }
         return this.#instance;
     }

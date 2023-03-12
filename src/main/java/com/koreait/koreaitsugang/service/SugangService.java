@@ -35,6 +35,8 @@ public class SugangService {
 
     public int applyCourse(int subjectCode, int userId){
 
+        abilityApply(subjectCode);
+
         PocketMst pocketMst = PocketMst.builder()
                 .subjectCode(subjectCode)
                 .userId(userId)
@@ -52,15 +54,16 @@ public class SugangService {
         return sugangRepository.deleteCourse(pocketMst);
     }
 
-    public OpenCourse loadCourses(PocketMst pocketMst) {
-        return sugangRepository.loadCourse(pocketMst);
+    public List<OpenCourse> loadCourses(int userId) {
+        return sugangRepository.loadCourse(userId);
     }
+
 
     private void abilityApply(int subjectCode){
 
-        int requestUser = sugangRepository.loadUserId(subjectCode);
+        OpenCourse requestUser = sugangRepository.findCourse(subjectCode);
 
-        if (requestUser == 0) {
+        if (requestUser != null) {
             Map<String, String> errorMap = new HashMap<>();
             errorMap.put("applyCountError", "이미 선택한 과목입니다.");
 

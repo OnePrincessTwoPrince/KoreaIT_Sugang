@@ -18,7 +18,6 @@ import java.util.List;
 @Mapper
 public interface SubjectRepository {
 
-
     public List<String> majorCategory();
 
     public int getSearchUserTotalCount(AdminSearchReqDto adminSearchReqDto);

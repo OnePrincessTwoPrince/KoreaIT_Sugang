@@ -3,6 +3,7 @@ window.onload = () => {
 
     SearchService.getInstance().loadCategories();
     SearchService.getInstance().clearCourseList();
+    SearchService.getInstance().loadCourseList();
 
     ComponentEvent.getInstance().addClickEventCategoryRadios();
 }
@@ -32,7 +33,6 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "get",
-<<<<<<< HEAD
             url: "http://localhost:8000/api/classification",
             dataType: "json",
             success : response => {
@@ -76,9 +76,6 @@ class SearchApi {
             async: false,
             type: "get",
             url: "http://localhost:8000/api/open",
-=======
-            url: "http://localhost:8000/api/search",
->>>>>>> ft-05
             data: searchObj,
             dataType: "json",
             success : response => {
@@ -134,14 +131,14 @@ class SearchApi {
         return returnData;
     }
 
-    loadCourse(){
+    loadCourse(pocketObj){
         let responseData = null;
 
         $.ajax({
             async: false,
             type: "get",
-            url: `http://localhost:8000/api/load`,
-            data: searchObj,
+            url: `http://localhost:8000/api/load/`,
+            data: pocketObj,
             dataType: "json",
             success: response => {
                 responseData = response.data;
@@ -164,7 +161,6 @@ class SearchService {
     }
 
     loadCategories() {
-<<<<<<< HEAD
         const classificationList = document.querySelector(".info");
         classificationList.innerHTML = ``;
 
@@ -180,25 +176,6 @@ class SearchService {
                     <input type="radio" class="info-radio" name="openCourse" id="${classificationObj}" value="${classificationObj}">
                     <label for="장바구니">장바구니</label>
                 `;
-=======
-        const categoryList = document.querySelector(".info");
-        categoryList.innerHTML = ``;
-        
-        const responseData = SearchApi.getInstance().getCategory();
-        
-        responseData.forEach((categoryObj,index) => {
-          
-            categoryList.innerHTML += `
-                <input type="radio" name="test1" class="info-radio" id="${categoryObj}" value="${categoryObj}">
-                <label for="${categoryObj}"class="info-text">${categoryObj}</label>
-            `;
-
-            if(responseData.length -1 == index) {
-                categoryList.innerHTML += `
-                    <input type="radio" name="test1" class="info-radio" id="장바구니" value="장바구니">
-                    <label for="장바구니"class="info-text">장바구니</label>
-                ` 
->>>>>>> ft-05
             }
         });
 
@@ -207,6 +184,11 @@ class SearchService {
 
     clearCourseList(){
         const pageController = document.querySelector(".opened-table tbody");
+        pageController.innerHTML = "";
+    }
+
+    clearloadCourseList(){
+        const pageController = document.querySelector(".confirmed-table tbody");
         pageController.innerHTML = "";
     }
 
@@ -294,10 +276,35 @@ class SearchService {
             if(pageNumber != searchObj.page) {
                 button.onclick = () => {
                     searchObj.page = pageNumber;
-
+                    this.loadOpenCourse();
                 }
             }
         });
+    }
+
+    loadCourseList(){
+        const responseData =  SearchApi.getInstance().loadCourse();
+
+        const openTable = document.querySelector(".confirmed-table tbody");
+        
+        openTable.innerHTML = ``;
+
+        responseData.forEach((data, index) => {
+            subjectCode.push(data);
+            openTable.innerHTML +=`
+            <tr>
+                <td><button type="button" class="delete-button">삭제</button></td>
+                <td>${data.classification}</td>
+                <td>${data.subjectCode}</td>
+                <td>${data.subjectName}</td>
+                <td>${data.credit}</td>
+                <td>${data.professorName}</td>
+                <td>${data.building} / ${data.lectureTime}</td>
+                <td>N</th>
+            </tr>
+            `;
+        });
+        ComponentEvent.getInstance().deleteCourseButton();
     }
 }
 
@@ -315,8 +322,6 @@ class ComponentEvent {
         radios.forEach(radio => {
             radio.onclick = () => {
                 searchObj.classification.splice(0);
-
-<<<<<<< HEAD
                 if(radio.checked) {
                     searchObj.classification.push(radio.value);
                     while(subjectCode.length != 0) {
@@ -336,6 +341,7 @@ class ComponentEvent {
     addClickApplyCourseButton() {
         const inputApplyCourse = document.querySelectorAll(".submit-button1");
         const inputCourseTable = document.querySelector(".confirmed-table tbody");
+        
 
         inputApplyCourse.forEach((button, index) => {
             button.onclick = () => {
@@ -346,26 +352,49 @@ class ComponentEvent {
                 inputCourseTable.innerHTML += `
                 <tr>
                     <td><button type="button" class="delete-button">삭제</button></td>
-                    <td>${subjectCode[index].classification}</td>
-                    <td>${subjectCode[index].subjectCode}</td>
-                    <td>${subjectCode[index].subjectName}</td>
-                    <td>${subjectCode[index].credit}</td>
-                    <td>${subjectCode[index].professorName}</td>
-                    <td>${subjectCode[index].building} / ${subjectCode[index].lectureTime}</td>
+                    <td>${applyData.classification}</td>
+                    <td>${applyData.subjectCode}</td>
+                    <td>${applyData.subjectName}</td>
+                    <td>${applyData.credit}</td>
+                    <td>${applyData.professorName}</td>
+                    <td>${applyData.building} / ${applyData.lectureTime}</td>
                     <td>N</th>
                 </tr>
                 `;
-                const deletebutton = document.querySelector(".delete-button");
-                if(deletebutton.onclick= () => {
-                    SearchApi.getInstance().deleteCourse(subjectCode[index]);
-                });
+                SearchService.getInstance().loadCourseList();
+                SearchService.getInstance().loadOpenCourse();
             }
         });
     }
+
+    deleteCourseButton(){
+        const deletebutton = document.querySelectorAll(".delete-button");
+        const outCourseTable = document.querySelector(".confirmed-table tbody");
+        
+        deletebutton.forEach((button, index) => {
+            button.onclick= () => {
+                subjectCode[index].userId = PrincipalApi.getInstance().getPrincipal().user.userId;
+                const deleteData = SearchApi.getInstance().deleteCourse(subjectCode[index]);
+
+                outCourseTable.outerHTML = `
+                <tr>
+                    <td><button type="button" class="delete-button">삭제</button></td>
+                    <td>${deleteData.classification}</td>
+                    <td>${deleteData.subjectCode}</td>
+                    <td>${deleteData.subjectName}</td>
+                    <td>${deleteData.credit}</td>
+                    <td>${deleteData.professorName}</td>
+                    <td>${deleteData.building} / ${deleteData.lectureTime}</td>
+                    <td>N</th>
+                </tr>
+                `;
+
+                SearchService.getInstance().loadCourseList();
+                location.reload(true);
+            };
+        });
+        
+    }
+
 }
-=======
-//             }
-//         }); 
-//     }
-// }
->>>>>>> ft-05
+

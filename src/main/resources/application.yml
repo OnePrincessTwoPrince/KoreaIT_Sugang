@@ -18,14 +18,13 @@ spring:
 
 mybatis:
   mapper-locations:
-<<<<<<< HEAD
     - /mappers/*
 
-file:
-  path: C:/koreaITproject/KoreaIT_Sugang/images/
-=======
-    - /mappers/*.xml
+#file:
+#  path: C:/koreaITproject/KoreaIT_Sugang/images/
+#    - /mappers/*.xml
 
 file:
   path: C:/koreaIT project/KoreaIT_Sugang/upload/
->>>>>>> ft-05
+
+

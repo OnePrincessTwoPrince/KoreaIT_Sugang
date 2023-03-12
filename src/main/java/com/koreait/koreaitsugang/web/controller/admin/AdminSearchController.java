@@ -11,7 +11,6 @@ public class AdminSearchController {
     public String user_information(){
         return "admin/user_information";
     }
-<<<<<<< HEAD
 
     @GetMapping("/userregister")
     public String user_register(){
@@ -22,8 +21,7 @@ public class AdminSearchController {
     public String professor_register() {
         return "admin/professor_register";
     }
-=======
-<<<<<<< HEAD
+
 
 //    @GetMapping("/search")
 //    public String sugang_information(){
@@ -39,8 +37,5 @@ public class AdminSearchController {
 //    public String sugang_modify(@PathVariable int subjectCode) {
 //        return "admin/sugang_modification";
 //  }
-=======
-    
->>>>>>> 5cb488122923b1964c8ac614d132c8e792c6cb7a
->>>>>>> ft-05
+
 }

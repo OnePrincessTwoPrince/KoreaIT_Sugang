@@ -8,6 +8,8 @@
         select
         classification_id,
         classification
+        from
+        classification_view
     </select>
 
     <select id="searchTotalCourse"
@@ -89,7 +91,7 @@
     </delete>
 
     <select id="loadCourse"
-            parameterType="com.koreait.koreaitsugang.entity.PocketMst"
+            parameterType="list"
             resultType="com.koreait.koreaitsugang.entity.OpenCourse">
         select
         sm.classification,
@@ -105,6 +107,25 @@
         inner join pocket_mst pm on (pm.subject_code = sm.subject_code)
         where
         pm.user_id = #{userId}
+    </select>
+
+    <select id="findCourse"
+            parameterType="integer"
+            resultType="com.koreait.koreaitsugang.entity.OpenCourse">
+        select
+        sm.classification,
+        sm.subject_code as subjectCode,
+        sm.subject_name as subjectName,
+        sm.credit,
+        sm.professor_name as professorName,
+        sm.lecture_time as lectureTime,
+        sm.building,
+        pm.user_id as userId
+        from
+        subject_mst sm
+        inner join pocket_mst pm on (pm.subject_code = sm.subject_code)
+        where
+            sm.subject_code = #{subjectCode}
     </select>
 
 

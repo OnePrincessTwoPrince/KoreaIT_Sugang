@@ -54,17 +54,12 @@
     font-size: 14px;
     font-weight: 400;
 }
-<<<<<<< HEAD
+
 .info {
     flex-direction: row;
 }
 .info-radio {
     margin: 0px 1px;
-=======
-
-.info-radio {
-    margin: 0px 5px;
->>>>>>> ft-05
 }
 
 .info-text {

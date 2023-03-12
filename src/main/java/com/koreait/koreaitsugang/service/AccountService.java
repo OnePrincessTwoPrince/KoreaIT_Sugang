@@ -1,27 +1,19 @@
 package com.koreait.koreaitsugang.service;
 
-<<<<<<< HEAD
 import com.koreait.koreaitsugang.entity.RoleDtl;
-=======
 import com.koreait.koreaitsugang.entity.MypageMst;
 import com.koreait.koreaitsugang.entity.UserImage;
->>>>>>> ft-05
 import com.koreait.koreaitsugang.entity.UserMst;
 import com.koreait.koreaitsugang.exception.CustomValidationException;
 import com.koreait.koreaitsugang.repository.AccountRepository;
 import com.koreait.koreaitsugang.web.dto.MypageMstReqDto;
-import com.koreait.koreaitsugang.web.dto.SubjectReqDto;
 import com.koreait.koreaitsugang.web.dto.UserImageDto;
 import lombok.RequiredArgsConstructor;
-<<<<<<< HEAD
-=======
 import org.springframework.beans.factory.annotation.Value;
->>>>>>> ft-05
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -34,8 +26,10 @@ import java.util.*;
 @RequiredArgsConstructor
 public class AccountService {
 
-<<<<<<< HEAD
     private final AccountRepository accountRepository;
+
+    @Value("${file.path}")
+    private String filePath;
 
     public UserMst updatePassword(UserMst userMst) {
         userMst.setPassword(new BCryptPasswordEncoder().encode(userMst.getPassword()));
@@ -46,18 +40,8 @@ public class AccountService {
 
     public int saveRoleId(RoleDtl roleDtl) {
         return accountRepository.saveRole(roleDtl);
-=======
-    @Value("${file.path}")
-    private String filePath;
-
-    private final AccountRepository accountRepository;
-
-    public void updatePassword(UserMst userMst) {
-        userMst.setPassword(new BCryptPasswordEncoder().encode(userMst.getPassword()));
-        accountRepository.updatePassword(userMst);
-        accountRepository.saveRole(userMst);
->>>>>>> ft-05
     }
+
 
     public UserMst getUser(int userId){
         return accountRepository.findUserByUserId(userId);
@@ -139,4 +123,6 @@ public class AccountService {
             }
         }
     }
+
+
 }

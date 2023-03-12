@@ -1,34 +1,23 @@
 package com.koreait.koreaitsugang.web.api;
 
 
-<<<<<<< HEAD
 import com.koreait.koreaitsugang.entity.RoleDtl;
-=======
-
 import com.koreait.koreaitsugang.aop.annotation.ParamsAspect;
 import com.koreait.koreaitsugang.aop.annotation.ValidAspect;
 import com.koreait.koreaitsugang.entity.MypageMst;
->>>>>>> ft-05
 import com.koreait.koreaitsugang.entity.UserMst;
 import com.koreait.koreaitsugang.security.PrincipalDetails;
 import com.koreait.koreaitsugang.service.AccountService;
 import com.koreait.koreaitsugang.web.dto.CMRespDto;
-<<<<<<< HEAD
-=======
 import com.koreait.koreaitsugang.web.dto.MypageMstReqDto;
-import com.koreait.koreaitsugang.web.dto.SubjectReqDto;
 import com.koreait.koreaitsugang.web.dto.UserImageDto;
 import io.swagger.annotations.ApiParam;
->>>>>>> ft-05
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-<<<<<<< HEAD
-=======
 import org.springframework.validation.BindingResult;
->>>>>>> ft-05
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -46,18 +35,13 @@ public class AccountApi {
     private AccountService accountService;
 
     @PutMapping("/encodePassword/{userId}")
-<<<<<<< HEAD
     public ResponseEntity<? extends CMRespDto<?>> encodePassword(@RequestBody @Valid UserMst userMst){
-=======
-    public ResponseEntity<? extends CMRespDto<?>> encodePassword(@PathVariable int userId, @RequestBody @Valid UserMst userMst, BindingResult bindingResult){
->>>>>>> ft-05
 
         accountService.updatePassword(userMst);
 
         return ResponseEntity
                 .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", true));
-<<<<<<< HEAD
     }
 
     @PostMapping("/saveRoleId")
@@ -67,8 +51,6 @@ public class AccountApi {
         return ResponseEntity
                 .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", true));
-=======
->>>>>>> ft-05
     }
 
     @GetMapping("/user/{userId}")
