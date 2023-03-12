@@ -1,6 +1,6 @@
 window.onload = () => {
-    MypageLoadService.getInstance().loadMypage();
     HeaderService.getInstance().loadHeader();
+    MypageLoadService.getInstance().loadMypage();
     
     ComponentEvent.getInstance().addClickEventModificationButton();
     ComponentEvent.getInstance().addClickEventImgAddButton();

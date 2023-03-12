@@ -102,7 +102,6 @@ class SugangRegisterService {
         const responeseData = SugangRegisterApi.getInstance().getCategories();
 
         const categorySelect = document.querySelector(".category-select");
-        categorySelect.innerHTML = `<option value="">전체조회</option>`;
 
         responeseData.forEach(data => {
             categorySelect.innerHTML += `

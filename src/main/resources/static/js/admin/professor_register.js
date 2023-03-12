@@ -124,9 +124,9 @@ class UserRegisterService{
         proObj.password = registerInputs[1].value;
         proObj.name = registerInputs[2].value;
         proObj.phone = registerInputs[3].value;
-        proObj.email = registerInputs[4].value;
-        proObj.address = registerInputs[5].value;
-        proObj.birthDate = registerInputs[6].value;
+        proObj.birthDate = registerInputs[4].value;
+        proObj.email = registerInputs[5].value;
+        proObj.address = registerInputs[6].value;
         proObj.departmentNumber = registerInputs[7].value;
     }
 }

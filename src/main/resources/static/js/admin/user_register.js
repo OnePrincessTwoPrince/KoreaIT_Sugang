@@ -127,10 +127,10 @@ class UserRegisterService{
         stuObj.password = registerInputs[1].value;
         stuObj.name = registerInputs[2].value;
         stuObj.phone = registerInputs[3].value;
-        stuObj.email = registerInputs[4].value;
-        stuObj.address = registerInputs[5].value;
+        stuObj.birthDate = registerInputs[4].value;
+        stuObj.email = registerInputs[5].value;
         stuObj.grade = registerInputs[6].value;
-        stuObj.birthDate = registerInputs[7].value;
+        stuObj.address = registerInputs[7].value;
         stuObj.departmentNumber = registerInputs[8].value;
     }
 }

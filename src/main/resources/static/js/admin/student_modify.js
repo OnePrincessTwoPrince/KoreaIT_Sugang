@@ -191,10 +191,10 @@ class StudentModifyService{
         stuObj.password = modificationInputs[1].value;
         stuObj.name = modificationInputs[2].value;
         stuObj.phone = modificationInputs[3].value;
-        stuObj.email = modificationInputs[4].value;
-        stuObj.address = modificationInputs[5].value;
+        stuObj.birthDate = modificationInputs[4].value;
+        stuObj.email = modificationInputs[5].value;
         stuObj.grade = modificationInputs[6].value;
-        stuObj.birthDate = modificationInputs[7].value;
+        stuObj.address = modificationInputs[7].value;
         // stuObj.departmentNumber = modificationInputs[8].value;
         stuObj.departmentNumber = categorySelect.options[categorySelect.selectedIndex].value;
     }
@@ -214,10 +214,10 @@ class StudentModifyService{
         modificationInputs[1].value = responeseData.username.password;
         modificationInputs[2].value = responeseData.username.name;
         modificationInputs[3].value = responeseData.username.phone;
-        modificationInputs[4].value = responeseData.username.email;
-        modificationInputs[5].value = responeseData.username.address;
+        modificationInputs[4].value = responeseData.username.birthDate;
+        modificationInputs[5].value = responeseData.username.email;
         modificationInputs[6].value = responeseData.username.grade;
-        modificationInputs[7].value = responeseData.username.birthDate;
+        modificationInputs[7].value = responeseData.username.address;
         modificationInputs[8].value = responeseData.username.category;
         
 

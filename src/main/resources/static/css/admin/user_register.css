@@ -33,9 +33,13 @@ input, textarea {
     outline: none;
 }
 
-input, select, textarea {
+input, textarea {
     padding: 5px;
     cursor: pointer;
+}
+
+select {
+    height: 40px;
 }
 
 button {
@@ -121,6 +125,10 @@ button:not(:disabled):hover {
 
 .register-input {
     height: 20px;
+}
+
+.category-select {
+    height: 40px;
 }
 
 .error-message {

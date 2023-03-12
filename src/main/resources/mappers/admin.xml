@@ -89,7 +89,7 @@
     <insert id="saveStudent" parameterType="com.koreait.koreaitsugang.web.dto.admin.AddStudentReqDto" useGeneratedKeys="true" keyProperty="userId">
         insert into user_mst
         values
-            (0, #{username}, #{password},#{name},#{phone},#{email},#{address},#{birthDate},#{departmentNumber})
+            (0, #{username}, #{password},#{name},#{phone},#{birthDate},#{email},#{address},#{departmentNumber})
     </insert>
 
     <insert id="saveStudentMst" parameterType="com.koreait.koreaitsugang.web.dto.admin.AddStudentReqDto">
@@ -110,7 +110,7 @@
     <insert id="saveProfessor" parameterType="com.koreait.koreaitsugang.web.dto.admin.AddProfessorReqDto" useGeneratedKeys="true" keyProperty="userId">
         insert into user_mst
         values
-            (0, #{username}, #{password},#{name},#{phone},#{email},#{address},#{birthDate},#{departmentNumber})
+            (0, #{username}, #{password},#{name},#{phone},#{birthDate},#{email},#{address},#{departmentNumber})
     </insert>
 
     <insert id="saveProfessorMst" parameterType="com.koreait.koreaitsugang.web.dto.admin.AddProfessorReqDto">
@@ -196,9 +196,9 @@
             um.password = #{password},
             um.name = #{name},
             um.phone = #{phone},
+            um.birth_date = #{birthDate},
             um.email = #{email},
             um.address = #{address},
-            um.birth_date = #{birthDate},
             um.department_number = #{departmentNumber}
         where
             um.username = #{username}
