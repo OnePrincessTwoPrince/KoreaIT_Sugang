@@ -1,14 +1,11 @@
 package com.koreait.koreaitsugang.repository;
 
-<<<<<<< HEAD
 import com.koreait.koreaitsugang.entity.ClassificationView;
 import com.koreait.koreaitsugang.entity.OpenCourse;
 import com.koreait.koreaitsugang.entity.PocketMst;
 import com.koreait.koreaitsugang.web.dto.SearchNumberListReqDto;
 import com.koreait.koreaitsugang.web.dto.SearchSugangReqDto;
-=======
 
->>>>>>> ft-05
 import org.apache.ibatis.annotations.Mapper;
 
 
