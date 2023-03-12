@@ -53,7 +53,6 @@
 
     <select id="findUserByUserId" parameterType="Integer" resultMap="userMst">
         select
-<<<<<<< HEAD
         um.user_id,
         um.username,
         um.password,
@@ -63,17 +62,6 @@
         um.email,
         um.address,
         um.department_number,
-=======
-            um.user_id,
-            um.username,
-            um.password,
-            um.name,
-            um.phone,
-            um.birth_date,
-            um.email,
-            um.address,
-            um.department_number,
->>>>>>> ft-05
 
         rd.role_id,
         rm.role_name
@@ -94,11 +82,7 @@
         user_id = #{userId}
     </update>
 
-<<<<<<< HEAD
     <insert id="saveRole" parameterType="com.koreait.koreaitsugang.entity.RoleDtl">
-=======
-    <insert id="saveRole" parameterType="com.koreait.koreaitsugang.entity.UserMst">
->>>>>>> ft-05
         insert into role_dtl
         values (0, #{userId}, #{roleId})
     </insert>

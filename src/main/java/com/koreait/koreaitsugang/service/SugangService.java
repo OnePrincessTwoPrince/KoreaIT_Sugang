@@ -6,7 +6,6 @@ import com.koreait.koreaitsugang.entity.PocketMst;
 import com.koreait.koreaitsugang.exception.CustomApplyCountException;
 import com.koreait.koreaitsugang.repository.SugangRepository;
 import com.koreait.koreaitsugang.web.dto.SearchNumberListReqDto;
-import com.koreait.koreaitsugang.web.dto.SearchSugangReqDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

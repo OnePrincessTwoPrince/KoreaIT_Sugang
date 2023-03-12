@@ -7,7 +7,6 @@ import com.koreait.koreaitsugang.security.PrincipalDetails;
 import com.koreait.koreaitsugang.service.SugangService;
 import com.koreait.koreaitsugang.web.dto.CMRespDto;
 import com.koreait.koreaitsugang.web.dto.SearchNumberListReqDto;
-import com.koreait.koreaitsugang.web.dto.SearchSugangReqDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

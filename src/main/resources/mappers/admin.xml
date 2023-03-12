@@ -11,7 +11,6 @@
             department_mst;
     </select>
 
-<<<<<<< HEAD
     <select id="getSearchUserTotalCount" parameterType="com.koreait.koreaitsugang.web.dto.admin.AdminSearchReqDto" resultType="integer">
         select
             count(*)
@@ -211,7 +210,8 @@
             grade = #{grade}
         where
             user_id = #{userId}
-=======
+    </update>
+
     <select id="searchSugang" parameterType="com.koreait.koreaitsugang.web.dto.SearchReqDto" resultType="com.koreait.koreaitsugang.entity.SubjectMst">
         select
             category,
@@ -316,7 +316,7 @@
             max_person = #{maxPerson}
         where
             subject_code = #{subjectCode};
->>>>>>> ft-05
+
     </update>
 
 </mapper>
