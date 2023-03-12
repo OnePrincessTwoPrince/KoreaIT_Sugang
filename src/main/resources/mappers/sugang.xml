@@ -107,7 +107,6 @@
         inner join pocket_mst pm on (pm.subject_code = sm.subject_code)
         where
         pm.user_id = #{userId}
-        and pm.subject_code = #{subjectCode}
     </select>
 
 

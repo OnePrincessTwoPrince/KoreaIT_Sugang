@@ -72,7 +72,7 @@ public class SugangApi {
     }
 
     @GetMapping("/load")
-    public ResponseEntity<CMRespDto<?>> loadCourses(PocketMst pocketMst) {
+    public ResponseEntity<CMRespDto<?>> loadCourses(@RequestBody PocketMst pocketMst) {
         searchService.loadCourses(pocketMst);
         return ResponseEntity
                 .ok()
