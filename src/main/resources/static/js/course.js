@@ -6,6 +6,7 @@ window.onload = () => {
     SearchService.getInstance().loadCourseList();
 
     ComponentEvent.getInstance().addClickEventCategoryRadios();
+    ComponentEvent.getInstance().addClickEventSearchButton();
 }
 
 const searchObj = {
@@ -137,7 +138,7 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "get",
-            url: `http://localhost:8000/api/load/`,
+            url: `http://localhost:8000/api/load`,
             data: pocketObj,
             dataType: "json",
             success: response => {
@@ -188,10 +189,9 @@ class SearchService {
     }
 
     clearloadCourseList(){
-        const pageController = document.querySelector(".confirmed-table tbody");
-        pageController.innerHTML = "";
-    }
-
+            const pageController = document.querySelector(".confirmed-table tbody");
+            pageController.innerHTML = "";
+       }
 
     loadOpenCourse() {
         const responseData = SearchApi.getInstance().getOpenCourse(searchObj);
@@ -286,7 +286,7 @@ class SearchService {
         const responseData =  SearchApi.getInstance().loadCourse();
 
         const openTable = document.querySelector(".confirmed-table tbody");
-        
+
         openTable.innerHTML = ``;
 
         responseData.forEach((data, index) => {
@@ -341,7 +341,7 @@ class ComponentEvent {
     addClickApplyCourseButton() {
         const inputApplyCourse = document.querySelectorAll(".submit-button1");
         const inputCourseTable = document.querySelector(".confirmed-table tbody");
-        
+
 
         inputApplyCourse.forEach((button, index) => {
             button.onclick = () => {
@@ -370,7 +370,7 @@ class ComponentEvent {
     deleteCourseButton(){
         const deletebutton = document.querySelectorAll(".delete-button");
         const outCourseTable = document.querySelector(".confirmed-table tbody");
-        
+
         deletebutton.forEach((button, index) => {
             button.onclick= () => {
                 subjectCode[index].userId = PrincipalApi.getInstance().getPrincipal().user.userId;
@@ -393,8 +393,27 @@ class ComponentEvent {
                 location.reload(true);
             };
         });
-        
+
     }
 
+    addClickEventSearchButton() {
+        const classificationList = document.querySelector(".info");
+        const searchInput = document.querySelector(".subject-code-select");
+        const searchButton = document.querySelector(".select-button");
+
+        searchButton.onclick = () => {
+            searchObj.category = classificationList.value;
+            searchObj.searchValue = searchInput.value;
+            searchObj.page = 1;
+
+            SearchService.getInstance().loadOpenCourse();
+        }
+
+        searchInput.onkeyup = () => {
+            if(window.event.keyCode == 13) {
+                searchButton.click();
+            }
+        }
+    }
 }
 

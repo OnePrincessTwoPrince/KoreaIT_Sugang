@@ -3,8 +3,10 @@ package com.koreait.koreaitsugang.repository;
 import com.koreait.koreaitsugang.entity.ClassificationView;
 import com.koreait.koreaitsugang.entity.OpenCourse;
 import com.koreait.koreaitsugang.entity.PocketMst;
+import com.koreait.koreaitsugang.entity.SearchSubjectMst;
 import com.koreait.koreaitsugang.web.dto.SearchNumberListReqDto;
 
+import com.koreait.koreaitsugang.web.dto.SearchSubjectReqDto;
 import com.koreait.koreaitsugang.web.dto.SearchSugangReqDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -32,5 +34,4 @@ public interface SugangRepository {
     public List<OpenCourse> loadCourse(int userId);
 
     public OpenCourse findCourse(int subjectCode);
-
 }

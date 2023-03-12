@@ -1,5 +1,4 @@
 
-
 class HeaderApi {
     static #instance = null;
     static getInstance() {
@@ -15,7 +14,8 @@ class HeaderApi {
         $.ajax({
             async: false,
             type: "get",
-            url: `  ${PrincipalApi.getInstance().getPrincipal().user.userId != null? `
+            url: `  ${PrincipalApi.getInstance().getPrincipal().user.userId != null
+                        ? `
                         http://localhost:8000/api/account/${PrincipalApi.getInstance().getPrincipal().user.userId}`
                         : `
                         http://localhost:8000/announcement.html

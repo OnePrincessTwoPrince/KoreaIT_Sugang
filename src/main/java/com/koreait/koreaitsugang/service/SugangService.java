@@ -3,9 +3,11 @@ package com.koreait.koreaitsugang.service;
 import com.koreait.koreaitsugang.entity.ClassificationView;
 import com.koreait.koreaitsugang.entity.OpenCourse;
 import com.koreait.koreaitsugang.entity.PocketMst;
+import com.koreait.koreaitsugang.entity.SearchSubjectMst;
 import com.koreait.koreaitsugang.exception.CustomApplyCountException;
 import com.koreait.koreaitsugang.repository.SugangRepository;
 import com.koreait.koreaitsugang.web.dto.SearchNumberListReqDto;
+import com.koreait.koreaitsugang.web.dto.SearchSubjectReqDto;
 import com.koreait.koreaitsugang.web.dto.SearchSugangReqDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -57,7 +59,6 @@ public class SugangService {
     public List<OpenCourse> loadCourses(int userId) {
         return sugangRepository.loadCourse(userId);
     }
-
 
     private void abilityApply(int subjectCode){
 

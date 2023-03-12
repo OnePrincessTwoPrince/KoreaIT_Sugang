@@ -1,8 +1,8 @@
-@font-face {
-    font-family: 'SUIT-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+* {
+    padding: 0px;
+    
+    list-style-type:none; 
+    text-decoration: none;
 }
 
 * {
@@ -19,10 +19,10 @@
     border-radius: 5px;
 }
 
-#container {
+/* #container {
     margin: 0px auto;
     width: 1400px;
-}
+} */
 
 input, select, textarea, table, th, td {
     border: 1px solid #dbdbdb;
@@ -58,17 +58,17 @@ button:not(:disabled):hover {
 .main-container {
     display: flex;
     
-    margin: 20px auto 0px;
+    margin: 50px auto 0px;
     width: 1400px;
-    height: 780px;
+    height: 900px;
 
     background-color: white;
     box-shadow: 1px 1px 5px 1px black;
 }
 
 .content-container {
-    width: 70%;
-    height: 100%;
+    width: 1000px;
+    height: 900px;
 }
 
 .content-title {

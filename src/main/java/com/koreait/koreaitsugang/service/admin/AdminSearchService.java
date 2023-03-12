@@ -29,7 +29,6 @@ public class AdminSearchService {
 
     @Value("${file.path}")
     private String filePath;
-
     @Autowired
     private SubjectRepository subjectRepository;
 
@@ -39,9 +38,7 @@ public class AdminSearchService {
     }
 
     public List<String> Categories() {
-
         List<String> category = subjectRepository.majorCategory();
-        System.out.println(category);
         return category;
     }
 

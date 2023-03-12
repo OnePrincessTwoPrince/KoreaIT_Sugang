@@ -18,6 +18,7 @@ import java.util.List;
 @Mapper
 public interface SubjectRepository {
 
+
     public List<String> majorCategory();
 
     public int getSearchUserTotalCount(AdminSearchReqDto adminSearchReqDto);
@@ -50,8 +51,6 @@ public interface SubjectRepository {
 
     public int updateStudentmstByUseranme(UpdateStudentReqDto updateStudentReqDto);
 
-
-    ///////////////////
     public List<SubjectMst> searchSugang(SearchReqDto searchReqDto);
 
     public SubjectMst findBySubjectCode(int subjectCode);

@@ -1,11 +1,16 @@
 package com.koreait.koreaitsugang.aop;
 
+import com.koreait.koreaitsugang.exception.CustomValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.BeanPropertyBindingResult;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Slf4j

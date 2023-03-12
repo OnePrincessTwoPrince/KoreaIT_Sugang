@@ -93,7 +93,7 @@ class StudentModifyApi{
         $.ajax({
             async: false,
             type: "put",
-            url:`http://localhost:8000/api/admin/user/${stuObj.username}`,
+            url:`http://127.0.0.1:8000/api/admin/user/${stuObj.username}`,
             contentType: "application/json",
             data: JSON.stringify(stuObj),
             dataType: "json",
@@ -137,7 +137,7 @@ class StudentModifyApi{
         $.ajax({
             async:false,
             type:"post",
-            url: `http://localhost:8000/api/admin/user/${stuObj.username}/images`,
+            url: `http://127.0.0.1:8000/api/admin/user/${stuObj.username}/images`,
             encType: "mulipart/form-data",
             contentType: false,
             processData: false,
@@ -364,7 +364,7 @@ class ComponentEvent {
 
             if(successFlag){
                 StudentModifyApi.getInstance().registerImg();
-                location.href="http://192.168.7.125:5501/templates/admin/user_information.html";
+                location.href="http://127.0.0.1:5501/templates/admin/user_information.html";
             }
         }
     }

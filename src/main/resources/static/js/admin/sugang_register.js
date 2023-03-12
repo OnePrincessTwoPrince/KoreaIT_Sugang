@@ -35,7 +35,7 @@ class SugangRegisterApi {
         $.ajax({
             async: false,
             type: "post",
-            url: "http://localhost:8000/api/admin/sugang",
+            url: "http://127.0.0.1:8000/api/admin/sugang",
             contentType: "application/json",
             data: JSON.stringify(subjectObj),
             dataType: "json",
@@ -57,7 +57,7 @@ class SugangRegisterApi {
         $.ajax({
             async: false,
             type: "get",
-            url: "http://localhost:8000/api/admin",
+            url: "http://127.0.0.1:8000/api/admin",
             dataType: "json",
             success: response => {
                 responseData = response.data;
@@ -128,10 +128,11 @@ class ComponentEvent {
             SugangRegisterService.getInstance().setSubjectObjValues();
             const successFlag = SugangRegisterApi.getInstance().registerSugang();
             
-            if(!successFlag){
-                return;
-            }else {
-                location.href="http://127.0.0.1:5500/templates/admin/sugang_information.html";
+            if(successFlag) {
+                alert("등록이 완료되었습니다.");
+                location.href="http://127.0.0.1:5501/templates/admin/sugang_information.html";
+            } else {
+                location.reload();
             }
         }
     }
