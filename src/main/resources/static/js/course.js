@@ -24,7 +24,7 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "get",
-            url: "http://127.0.0.1:8000/api/search",
+            url: "http://localhost:8000/api/search",
             data: searchObj,
             dataType: "json",
             success : response => {
@@ -58,13 +58,13 @@ class SearchService {
           
             categoryList.innerHTML += `
                 <input type="radio" name="test1" class="info-radio" id="${categoryObj}" value="${categoryObj}">
-                <label for="${categoryObj}">${categoryObj}</label>
+                <label for="${categoryObj}"class="info-text">${categoryObj}</label>
             `;
 
             if(responseData.length -1 == index) {
                 categoryList.innerHTML += `
-                    <input type="radio" name="test1" class="info-radio" id="${categoryObj}" value="${categoryObj}">
-                    <label for="${categoryObj}">장바구니</label>
+                    <input type="radio" name="test1" class="info-radio" id="장바구니" value="장바구니">
+                    <label for="장바구니"class="info-text">장바구니</label>
                 ` 
             }
         });

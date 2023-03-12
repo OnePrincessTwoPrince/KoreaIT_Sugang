@@ -19,4 +19,9 @@ public class AccountController {
         return "user/login_error";
     }
 
+    @GetMapping("/mypage")
+    public String mypage() {
+        return "mypage";
+    }
 }
+

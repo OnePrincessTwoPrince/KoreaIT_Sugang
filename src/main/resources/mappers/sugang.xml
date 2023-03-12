@@ -18,9 +18,23 @@
 <!--    </insert>-->
 
     <select id="searchCategory" resultType="String">
-        select distinct category
+        select distinct classification
         from
             subject_mst
+    </select>
+
+    <select id="findSubjectCode" parameterType="com.koreait.koreaitsugang.web.dto.SearchSubjectReqDto" resultType="com.koreait.koreaitsugang.entity.SearchSubjectMst">
+        select
+            classification,
+            subject_code as subjectCode,
+            credit,
+            professor_name as professorName,
+            building,
+            lecture_time as lectureTime
+        from
+            subject_mst
+        where
+            subject_code = #{subjectCode};
     </select>
 
 </mapper>
