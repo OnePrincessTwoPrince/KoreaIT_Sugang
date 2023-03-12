@@ -83,6 +83,13 @@
         values (0, #{subjectCode}, #{userId})
     </insert>
 
+    <delete id="deleteCourse"
+            parameterType="com.koreait.koreaitsugang.entity.PocketMst">
+        delete from pocket_mst
+        where
+            subject_code = #{subjectCode}
+    </delete>
+
     <select id="loadCourse"
             parameterType="com.koreait.koreaitsugang.entity.PocketMst"
             resultType="com.koreait.koreaitsugang.entity.OpenCourse">
@@ -102,4 +109,6 @@
         pm.user_id = #{userId}
         and pm.subject_code = #{subjectCode}
     </select>
+
+
 </mapper>

@@ -29,11 +29,4 @@ input {
     cursor: pointer;
 }
 
-button:disabled {
-    cursor: default;
-}
 
-button:not(:disabled):hover{
-    background-color: #2804f7;
-    color: #f0f0f0;
-}

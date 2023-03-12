@@ -4,7 +4,7 @@ import com.koreait.koreaitsugang.aop.annotation.ParamsAspect;
 import com.koreait.koreaitsugang.entity.ClassificationView;
 import com.koreait.koreaitsugang.entity.PocketMst;
 import com.koreait.koreaitsugang.security.PrincipalDetails;
-import com.koreait.koreaitsugang.service.SearchService;
+import com.koreait.koreaitsugang.service.SugangService;
 import com.koreait.koreaitsugang.web.dto.CMRespDto;
 import com.koreait.koreaitsugang.web.dto.SearchNumberListReqDto;
 import com.koreait.koreaitsugang.web.dto.SearchSugangReqDto;
@@ -19,9 +19,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class SearchApi {
+public class SugangApi {
 
-    private final SearchService searchService;
+    private final SugangService searchService;
 
     @GetMapping("/classification")
     public ResponseEntity<CMRespDto<List<ClassificationView>>> search(){
@@ -56,6 +56,16 @@ public class SearchApi {
     @PostMapping("/apply")
     public ResponseEntity<CMRespDto<?>> applyCourse(@RequestBody PocketMst pocketMst, @AuthenticationPrincipal PrincipalDetails principalDetails){
         searchService.applyCourse(pocketMst.getSubjectCode(), principalDetails.getUser().getUserId());
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", pocketMst));
+    }
+
+    @ParamsAspect
+    @DeleteMapping("/delete")
+    public ResponseEntity<CMRespDto<?>> deleteCourse(@RequestBody PocketMst pocketMst, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        searchService.deleteCourse(pocketMst.getSubjectCode(), principalDetails.getUser().getUserId());
+
         return ResponseEntity
                 .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", pocketMst));

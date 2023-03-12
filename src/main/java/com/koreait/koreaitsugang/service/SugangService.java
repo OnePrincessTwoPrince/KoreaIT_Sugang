@@ -5,11 +5,9 @@ import com.koreait.koreaitsugang.entity.OpenCourse;
 import com.koreait.koreaitsugang.entity.PocketMst;
 import com.koreait.koreaitsugang.exception.CustomApplyCountException;
 import com.koreait.koreaitsugang.repository.SugangRepository;
-import com.koreait.koreaitsugang.security.PrincipalDetails;
 import com.koreait.koreaitsugang.web.dto.SearchNumberListReqDto;
 import com.koreait.koreaitsugang.web.dto.SearchSugangReqDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -18,7 +16,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class SearchService {
+public class SugangService {
 
     private final SugangRepository sugangRepository;
 
@@ -45,13 +43,22 @@ public class SearchService {
         return sugangRepository.saveCourse(pocketMst);
     }
 
+    public int deleteCourse(int subjectCode, int userId) {
+        PocketMst pocketMst = PocketMst.builder()
+                .subjectCode(subjectCode)
+                .userId(userId)
+                .build();
+
+        return sugangRepository.deleteCourse(pocketMst);
+    }
+
     public OpenCourse loadCourses(PocketMst pocketMst) {
         return sugangRepository.loadCourse(pocketMst);
     }
 
-    private void abilityApply(int subjectCode, int userId){
+    private void abilityApply(int subjectCode){
 
-        int requestUser = sugangRepository.loadUserId(userId);
+        int requestUser = sugangRepository.loadUserId(subjectCode);
 
         if (requestUser == 0) {
             Map<String, String> errorMap = new HashMap<>();

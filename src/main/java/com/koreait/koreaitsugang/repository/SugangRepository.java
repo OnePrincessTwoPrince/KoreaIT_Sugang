@@ -25,6 +25,8 @@ public interface SugangRepository {
 
     public int saveCourse(PocketMst pocketMst);
 
+    public int deleteCourse(PocketMst pocketMst);
+
     public OpenCourse loadCourse(PocketMst pocketMst);
 
 }

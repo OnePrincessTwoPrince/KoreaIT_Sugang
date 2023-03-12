@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/search")
-public class SearchController {
+public class SugangController {
 
     @GetMapping("")
     public String loadSugang(){

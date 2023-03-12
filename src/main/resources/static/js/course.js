@@ -108,6 +108,28 @@ class SearchApi {
         return responseData;
     }
 
+    deleteCourse(pocketObj) {
+        let returnData = pocketObj;
+
+        $.ajax({
+            async: false,
+            type: "delete",
+            url: 'http://localhost:8000/api/delete',
+            contentType: "application/json",
+            data: JSON.stringify(pocketObj),
+            dataType:"json",
+            success : response => {
+                returnData = response.data;
+                console.log(response);
+            },
+            error: error => {
+                console.log(error);
+            }
+        });
+
+        return returnData;
+    }
+
     loadCourse(){
         let responseData = null;
 
@@ -298,7 +320,7 @@ class ComponentEvent {
 
                 inputCourseTable.innerHTML += `
                 <tr>
-                    <td><button type="submit" class="submit-button2">삭제</button></td>
+                    <td><button type="button" class="delete-button">삭제</button></td>
                     <td>${subjectCode[index].classification}</td>
                     <td>${subjectCode[index].subjectCode}</td>
                     <td>${subjectCode[index].subjectName}</td>
@@ -308,8 +330,11 @@ class ComponentEvent {
                     <td>N</th>
                 </tr>
                 `;
+                const deletebutton = document.querySelector(".delete-button");
+                if(deletebutton.onclick= () => {
+                    SearchApi.getInstance().deleteCourse(subjectCode[index]);
+                });
             }
-        })
-
+        });
     }
 }

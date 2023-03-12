@@ -186,7 +186,6 @@ hr {
 
 .ok-sugang:hover {
     background-color: #2804f7;
-
     color: #ffffff;
 }
 
@@ -213,7 +212,7 @@ hr {
     height: 5px;
 }
 
-.submit-button2{
+.delete-button{
     padding: 3px 5px;
 
     border: 1px solid #fa3333;
@@ -227,7 +226,7 @@ hr {
     cursor: pointer;
 }
 
-.submit-button2:hover {
+.delete-button:hover {
     background-color: #f0f0f0;
     color: #fa3333;
 }
