@@ -18,7 +18,7 @@
 <!--    </insert>-->
 
     <select id="searchCategory" resultType="String">
-        select distinct category
+        select distinct classification
         from
             subject_mst
     </select>

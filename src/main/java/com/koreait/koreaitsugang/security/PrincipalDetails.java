@@ -29,7 +29,7 @@ public class PrincipalDetails implements UserDetails {
         ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
         List<RoleDtl> roleDtlList = user.getRoleDtl();
-        for (int i = 0; i< roleDtlList.size(); i++) {
+        for(int i = 0; i < roleDtlList.size(); i++) {
             RoleDtl dtl = roleDtlList.get(i);
             RoleMst roleMst = dtl.getRoleMst();
             String roleName = roleMst.getRoleName();
@@ -74,5 +74,6 @@ public class PrincipalDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 
 }

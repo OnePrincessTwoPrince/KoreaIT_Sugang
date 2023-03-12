@@ -5,8 +5,9 @@
 .container {
     display: flex;
     flex-direction: row;
-    width: 700px;
-    height: 700px;
+    margin-top: 30px;
+    width: 800px;
+    height: 770px;
     border-radius: 5px;
     background-color: #6a8cc0;
 }
@@ -18,7 +19,7 @@
     flex-direction: column;
     align-items: center;
 
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .img-form {
