@@ -1,6 +1,5 @@
 package com.koreait.koreaitsugang.web.api;
 
-import com.koreait.koreaitsugang.service.SearchService;
 import com.koreait.koreaitsugang.web.dto.CMRespDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
