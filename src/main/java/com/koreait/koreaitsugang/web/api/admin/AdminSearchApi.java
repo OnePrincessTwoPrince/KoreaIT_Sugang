@@ -29,13 +29,15 @@ public class AdminSearchApi {
 
     @GetMapping("/admin/usersearch")
     public ResponseEntity<CMRespDto<?>> search(){
-        return ResponseEntity.ok()
+        return ResponseEntity
+                .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully",adminSearchService.Categories()));
     }
 
     @GetMapping("/admin/userregister")
     public ResponseEntity<CMRespDto<?>> register(){
-        return ResponseEntity.ok()
+        return ResponseEntity
+                .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully",adminSearchService.Categories()));
     }
 
@@ -46,7 +48,8 @@ public class AdminSearchApi {
 
     @GetMapping("/sugang/{subjectCode}")
     public ResponseEntity<CMRespDto<Map<String, Object>>> getSugang(@PathVariable("subjectCode") int subjectCode) {
-        return ResponseEntity.ok()
+        return ResponseEntity
+                .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(),"Successfully",adminSearchService.getSugang(subjectCode)));
     }
 
@@ -71,14 +74,17 @@ public class AdminSearchApi {
     @DeleteMapping("/admin/users")
     public ResponseEntity<CMRespDto<?>> removeUsers(@RequestBody DeleteUserReqDto deleteUserReqDto){
         adminSearchService.removeUsers(deleteUserReqDto);
-        return ResponseEntity.ok().body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully",true));
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully",true));
     }
 
     @ParamsAspect
     @PostMapping("/admin/user/{username}/images")
     public ResponseEntity<CMRespDto<?>> registerUserImg(@PathVariable String username, @RequestPart List<MultipartFile> files) {
         adminSearchService.registerUserImage(username, files);
-        return ResponseEntity.ok()
+        return ResponseEntity
+                .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", true));
     }
 
@@ -86,7 +92,8 @@ public class AdminSearchApi {
     @PostMapping("/admin/user/{username}/images/modification")
     public ResponseEntity<CMRespDto<?>> modifyUserImg(@PathVariable String username, @RequestPart List<MultipartFile> files) {
         adminSearchService.registerUserImage(username, files);
-        return ResponseEntity.ok()
+        return ResponseEntity
+                .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", true));
     }
 
