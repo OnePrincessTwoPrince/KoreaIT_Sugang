@@ -2,13 +2,119 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.koreait.koreaitsugang.repository.admin.MajorRepository">
+<mapper namespace="com.koreait.koreaitsugang.repository.admin.SubjectRepository">
 
     <select id="majorCategory" resultType="String">
         select
-            department_name
+            category
         from
             department_mst;
     </select>
+
+    <select id="searchSugang" parameterType="com.koreait.koreaitsugang.web.dto.SearchReqDto" resultType="com.koreait.koreaitsugang.entity.SubjectMst">
+        select
+            category,
+            classification,
+            subject_code as subjectCode,
+            subject_name as subjectName,
+            credit,
+            professor_name as professorName,
+            building,
+            lecture_time as lectureTime
+        from
+            subject_mst
+        where
+            1=1
+        <if test='searchValue != null and searchValue !=""'>
+            and (
+            subject_name like CONCAT('%', #{searchValue}, '%')
+            or professor_name like CONCAT('%', #{searchValue}, '%')
+            or classification like CONCAT('%', #{searchValue}, '%')
+            )
+        </if>
+        <if test='category != null and category !=""'>
+            and category = #{category}
+        </if>
+        order by subjectCode
+        <if test='limit == "Y"'>
+            limit #{index}, #{count}
+        </if>
+    </select>
+
+    <select id="findBySubjectCode" parameterType="integer" resultType="com.koreait.koreaitsugang.entity.SubjectMst">
+        SELECT
+            subject_code as subjectCode,
+            subject_year as subjectYear,
+            subject_semester as subjectSemester,
+            college_name as collegeName,
+            category as category,
+            subject_grade as subjectGrade,
+            classification as classification,
+            subject_name as subjectName,
+            subject_class as subjectClass,
+            credit as credit,
+            professor_id as professorId,
+            professor_name as professorName,
+            lecture_time as lectureTime,
+            building,
+            max_person as maxPerson
+        from
+            subject_mst
+        where
+            subject_code = #{subjectCode};
+    </select>
+    <select id="getSubjectTotalCount" parameterType="com.koreait.koreaitsugang.web.dto.SearchNumberListReqDto" resultType="Integer">
+        select
+            count(*)
+        from
+            subject_mst
+        where
+        1 = 1
+        <if test='searchValue != null and searchValue != ""'>
+            and (
+            subject_name like CONCAT('%', #{searchValue}, '%')
+            or professor_name like CONCAT('%', #{searchValue}, '%')
+            or classification like CONCAT('%', #{searchValue}, '%')
+            )
+        </if>
+        <if test='category != null and category != ""'>
+            and category = #{category}
+        </if>
+    </select>
+    <delete id="deleteBySubjectCode" parameterType="list">
+        delete
+        from
+            subject_mst
+        where
+            subject_code in
+            <foreach collection="list" item="subjectCode" open="(" close=")" separator=",">
+                #{subjectCode}
+            </foreach>
+    </delete>
+    <insert id="saveSubject" parameterType="com.koreait.koreaitsugang.web.dto.SubjectReqDto">
+        insert into subject_mst
+        values (0,#{subjectYear},#{subjectSemester},#{collegeName},#{category},#{subjectGrade},#{classification},#{subjectName},#{subjectClass},#{credit},#{professorId},#{professorName},#{lectureTime},#{building},#{maxPerson})
+    </insert>
+    <update id="updateSubjectBySubjectCode" parameterType="com.koreait.koreaitsugang.web.dto.SubjectReqDto">
+        update subject_mst
+        set
+            subject_code = #{subjectCode},
+            subject_year = #{subjectYear},
+            subject_semester = #{subjectSemester},
+            college_name = #{collegeName},
+            category = #{category},
+            subject_grade = #{subjectGrade},
+            classification = #{classification},
+            subject_name = #{subjectName},
+            subject_class = #{subjectClass},
+            credit = #{credit},
+            professor_id = #{professorId},
+            professor_name = #{professorName},
+            lecture_time = #{lectureTime},
+            building = #{building},
+            max_person = #{maxPerson}
+        where
+            subject_code = #{subjectCode};
+    </update>
 
 </mapper>

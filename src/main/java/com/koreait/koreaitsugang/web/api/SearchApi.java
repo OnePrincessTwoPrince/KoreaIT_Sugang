@@ -2,7 +2,6 @@ package com.koreait.koreaitsugang.web.api;
 
 import com.koreait.koreaitsugang.service.SearchService;
 import com.koreait.koreaitsugang.web.dto.CMRespDto;
-import com.koreait.koreaitsugang.web.dto.SearchSugangReqDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

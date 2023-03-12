@@ -8,7 +8,7 @@ class UserInformationApi{
     static #instance = null;
     static getInstance() {
         if(this.#instance == null) {
-            this.#instance = new UserInformatinApi();
+            this.#instance = new UserInformationApi();
         }
         return this.#instance;
     }

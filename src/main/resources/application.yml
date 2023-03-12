@@ -11,7 +11,14 @@ spring:
     url: jdbc:mysql://doyoung.c3yf6hovsgph.ap-northeast-2.rds.amazonaws.com:3306/sugang
     username: admin
     password: 1q2w3e4r
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
 
 mybatis:
   mapper-locations:
-    - /mappers/*
+    - /mappers/*.xml
+
+file:
+  path: C:/koreaIT project/KoreaIT_Sugang/upload/

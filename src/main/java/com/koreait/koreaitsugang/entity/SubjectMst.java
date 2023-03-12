@@ -19,17 +19,19 @@ public class SubjectMst {
 
     private String collegeName;
 
-    private String departmentName;
+    private String category;
 
     private int subjectGrade;
 
-    private String category;
+    private String classification;
 
     private String subjectName;
 
     private int subjectClass;
 
     private int credit;
+
+    private int professorId;
 
     private String professorName;
 

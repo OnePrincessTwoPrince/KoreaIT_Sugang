@@ -1,24 +1,30 @@
 package com.koreait.koreaitsugang.web.api;
 
+
+
+import com.koreait.koreaitsugang.aop.annotation.ParamsAspect;
 import com.koreait.koreaitsugang.aop.annotation.ValidAspect;
+import com.koreait.koreaitsugang.entity.MypageMst;
 import com.koreait.koreaitsugang.entity.UserMst;
 import com.koreait.koreaitsugang.security.PrincipalDetails;
 import com.koreait.koreaitsugang.service.AccountService;
 import com.koreait.koreaitsugang.web.dto.CMRespDto;
+import com.koreait.koreaitsugang.web.dto.MypageMstReqDto;
+import com.koreait.koreaitsugang.web.dto.SubjectReqDto;
+import com.koreait.koreaitsugang.web.dto.UserImageDto;
 import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.net.URI;
+import java.util.List;
+import java.util.Map;
 
 
 @Slf4j
@@ -29,22 +35,16 @@ public class AccountApi {
     @Autowired
     private AccountService accountService;
 
-    @ValidAspect
-    @PostMapping("/password")
-    public ResponseEntity<? extends CMRespDto<? extends UserMst>> passencode(@RequestBody @Valid UserMst userMst, BindingResult bindingResult) {
+    @PutMapping("/encodePassword/{userId}")
+    public ResponseEntity<? extends CMRespDto<?>> encodePassword(@PathVariable int userId, @RequestBody @Valid UserMst userMst, BindingResult bindingResult){
 
-        UserMst user = accountService.registerUser(userMst);
+        accountService.updatePassword(userMst);
 
         return ResponseEntity
-                .created(URI.create("/api/account/user/" + userMst.getUserId()))
-                .body(new CMRespDto<>(HttpStatus.CREATED.value(), "Create a new User", user));
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", true));
     }
 
-
-    @ApiResponses({
-            @ApiResponse(code =400, message = "클라이언트가 잘못"),
-            @ApiResponse(code =401, message = "클라이언트가 잘못2")
-    })
     @GetMapping("/user/{userId}")
     public ResponseEntity<? extends CMRespDto<? extends UserMst>> getUser(@PathVariable int userId){
         return ResponseEntity
@@ -53,7 +53,7 @@ public class AccountApi {
     }
 
     @GetMapping("/principal")
-    public ResponseEntity<CMRespDto<? extends PrincipalDetails>> getPrincpalDetails(@ApiParam(hidden = true) @AuthenticationPrincipal PrincipalDetails principalDetails) {
+    public ResponseEntity<CMRespDto<? extends PrincipalDetails>> getPrincipalDetails(@AuthenticationPrincipal PrincipalDetails principalDetails) {
 
         if (principalDetails != null) {
             principalDetails.getAuthorities().forEach(role -> {
@@ -63,5 +63,80 @@ public class AccountApi {
         return ResponseEntity
                 .ok()
                 .body(new CMRespDto<>(HttpStatus.OK.value(), "Success", principalDetails));
+    }
+
+    @ParamsAspect
+    @GetMapping("/mypage/{userId}")
+    public ResponseEntity<CMRespDto<Map<String, Object>>> mypageUser(@PathVariable int userId, @AuthenticationPrincipal PrincipalDetails principalDetails){
+
+        if (principalDetails == null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new CMRespDto<>(HttpStatus.BAD_REQUEST.value(), "failed", null));
+        }
+
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", accountService.mypageUser(userId)));
+    }
+
+    @ParamsAspect
+    @GetMapping("{userId}")
+    public ResponseEntity<CMRespDto<? extends MypageMst>> loadUserInformation(@PathVariable int userId, @AuthenticationPrincipal PrincipalDetails principalDetails){
+
+        if (principalDetails == null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new CMRespDto<>(HttpStatus.BAD_REQUEST.value(), "failed", null));
+        }
+
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", accountService.loadUserInformation(userId)));
+    }
+
+    @ParamsAspect
+    @PostMapping("/user/{username}/images")
+    public ResponseEntity<CMRespDto<?>> registerUserImg(@PathVariable String username, @ApiParam @RequestPart(required = false) List<MultipartFile> files) {
+        accountService.registerUserImages(username, files);
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", true));
+    }
+
+    @ParamsAspect
+    @ValidAspect
+    @PatchMapping("/mypage/{username}")
+    public ResponseEntity<CMRespDto<?>> modifyUser(@PathVariable("username") String username, @Valid @RequestBody MypageMstReqDto mypageMstReqDto, BindingResult bindingResult){
+        accountService.modifyUSer(mypageMstReqDto);
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", true));
+    }
+
+    @ParamsAspect
+    @PostMapping("/user/{username}/images/modification")
+    public ResponseEntity<CMRespDto<?>> modifyUserImg(@PathVariable String username, @RequestPart(value="files",required = false)  List<MultipartFile> files) {
+        accountService.registerUserImages(username, files);
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", true));
+    }
+
+    @ParamsAspect
+    @GetMapping("/user/{userId}/images")
+    public ResponseEntity<CMRespDto<?>> getImages(@PathVariable int userId) {
+        List<UserImageDto> userImageDtos = accountService.getUsers(userId);
+
+        return ResponseEntity
+                .ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", userImageDtos));
+    }
+
+    @DeleteMapping("/user/{username}/image/{imageId}")
+    public ResponseEntity<CMRespDto<?>> removeUserImg(@PathVariable String username, @PathVariable int imageId) {
+        accountService.removeUserImage(imageId);
+        return ResponseEntity.ok()
+                .body(new CMRespDto<>(HttpStatus.OK.value(), "Successfully", null));
     }
 }
