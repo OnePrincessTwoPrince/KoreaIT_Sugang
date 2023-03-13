@@ -22,7 +22,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/sugang")
 @RequiredArgsConstructor
 public class SugangApi {
 

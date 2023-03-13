@@ -94,19 +94,19 @@
             parameterType="list"
             resultType="com.koreait.koreaitsugang.entity.OpenCourse">
         select
-        sm.classification,
-        sm.subject_code as subjectCode,
-        sm.subject_name as subjectName,
-        sm.credit,
-        sm.professor_name as professorName,
-        sm.lecture_time as lectureTime,
-        sm.building,
-        pm.user_id as userId
+            sm.classification,
+            sm.subject_code as subjectCode,
+            sm.subject_name as subjectName,
+            sm.credit,
+            sm.professor_name as professorName,
+            sm.lecture_time as lectureTime,
+            sm.building,
+            pm.user_id as userId
         from
-        subject_mst sm
-        inner join pocket_mst pm on (pm.subject_code = sm.subject_code)
+            subject_mst sm
+            inner join pocket_mst pm on (pm.subject_code = sm.subject_code)
         where
-        pm.user_id = #{userId}
+            pm.user_id = #{userId}
     </select>
 
     <select id="findCourse"
