@@ -23,19 +23,19 @@ public class AdminSearchController {
     }
 
 
-//    @GetMapping("/search")
-//    public String sugang_information(){
-//        return "admin/sugang_information";
-//    }
-//
-//    @GetMapping("/sugang")
-//    public String sugang_register(){
-//        return "admin/sugang_register";
-//    }
-//
-//    @GetMapping("/sugang/{subjectCode}")
-//    public String sugang_modify(@PathVariable int subjectCode) {
-//        return "admin/sugang_modification";
-//  }
+    @GetMapping("/search")
+    public String sugang_information(){
+        return "admin/sugang_information";
+    }
+
+    @GetMapping("/sugang")
+    public String sugang_register(){
+        return "admin/sugang_register";
+    }
+
+    @GetMapping("/sugang/{subjectCode}")
+    public String sugang_modify(@PathVariable int subjectCode) {
+        return "admin/sugang_modification";
+  }
 
 }

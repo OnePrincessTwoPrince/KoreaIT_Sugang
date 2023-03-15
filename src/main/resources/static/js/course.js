@@ -34,7 +34,7 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "get",
-            url: "http://localhost:8000/api/classification",
+            url: "http://localhost:8000/api/sugang/classification",
             dataType: "json",
             success : response => {
                 returnData = response.data;
@@ -52,7 +52,7 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "get",
-            url: "http://localhost:8000/api/search/total",
+            url: "http://localhost:8000/api/sugang/search/total",
             data: {
                 "classification" : searchObj.classification,
                 "searchValue" : searchObj.searchValue
@@ -76,7 +76,7 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "get",
-            url: "http://localhost:8000/api/open",
+            url: "http://localhost:8000/api/sugang/open",
             data: searchObj,
             dataType: "json",
             success : response => {
@@ -95,7 +95,7 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "post",
-            url: `http://localhost:8000/api/apply`,
+            url: `http://localhost:8000/api/sugang/apply`,
             contentType: "application/json",
             data: JSON.stringify(pocketObj),
             dataType: "json",
@@ -116,7 +116,7 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "delete",
-            url: 'http://localhost:8000/api/delete',
+            url: 'http://localhost:8000/api/sugang/delete',
             contentType: "application/json",
             data: JSON.stringify(pocketObj),
             dataType:"json",
@@ -138,7 +138,7 @@ class SearchApi {
         $.ajax({
             async: false,
             type: "get",
-            url: `http://localhost:8000/api/load`,
+            url: `http://localhost:8000/api/sugang/load`,
             data: pocketObj,
             dataType: "json",
             success: response => {
@@ -376,7 +376,7 @@ class ComponentEvent {
                 subjectCode[index].userId = PrincipalApi.getInstance().getPrincipal().user.userId;
                 const deleteData = SearchApi.getInstance().deleteCourse(subjectCode[index]);
 
-                outCourseTable.outerHTML = `
+                outCourseTable.remove += `
                 <tr>
                     <td><button type="button" class="delete-button">삭제</button></td>
                     <td>${deleteData.classification}</td>
@@ -388,10 +388,10 @@ class ComponentEvent {
                     <td>N</th>
                 </tr>
                 `;
-
                 SearchService.getInstance().loadCourseList();
                 location.reload(true);
             };
+            
         });
 
     }

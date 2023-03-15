@@ -4,25 +4,22 @@ import com.koreait.koreaitsugang.aop.annotation.ParamsAspect;
 import com.koreait.koreaitsugang.entity.ClassificationView;
 import com.koreait.koreaitsugang.entity.OpenCourse;
 import com.koreait.koreaitsugang.entity.PocketMst;
-import com.koreait.koreaitsugang.entity.SearchSubjectMst;
 import com.koreait.koreaitsugang.security.PrincipalDetails;
 import com.koreait.koreaitsugang.service.SugangService;
 import com.koreait.koreaitsugang.web.dto.CMRespDto;
 import com.koreait.koreaitsugang.web.dto.SearchNumberListReqDto;
-import com.koreait.koreaitsugang.web.dto.SearchSubjectReqDto;
 import com.koreait.koreaitsugang.web.dto.SearchSugangReqDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/sugang")
 @RequiredArgsConstructor
 public class SugangApi {
 
